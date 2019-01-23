@@ -67,7 +67,7 @@ pip install genie genie.libs.robot
 
 ```bash
 # clone this repo
-git clone https://github.com/CiscoTestAutomation/CLEUR19-DevNet-2595.git workshop
+git clone https://github.com/CiscoTestAutomation/CL-DevNet-2595.git workshop
 ```
 
 and now you should be ready to get going! You are now ready to continue to the [Workshop](workshop.md)!
