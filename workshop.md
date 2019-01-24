@@ -305,6 +305,7 @@ Devices output can be parsed into structure data with Genie Cli.
 
 ```bash
 
+cd ..
 genie parse "show version" --testbed-file testbed.yaml --device nx-osv-1 --output initial_output
 genie parse "show version" "show ip ospf interface vrf all" --testbed-file testbed.yaml --device nx-osv-1 --output initial_output
 ```

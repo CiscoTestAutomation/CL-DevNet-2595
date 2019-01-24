@@ -6,6 +6,34 @@ execute:
       \    Feb 11 13:19:50 2016  titanium-d1.7.3.0.D1.1.bin\r\n       4096    Feb\
       \ 25 20:49:07 2016  virtual-instance/\r\n\r\nUsage for bootflash://\r\n  369954816\
       \ bytes used\r\n 2840006656 bytes free\r\n 3209961472 bytes total"
+    sh run | egrep '^vrf|register-policy': vrf context management
+    show bgp ipv4 mvpn route-type 1 vrf all: "                                   ^\r\
+      \n% Invalid command at '^' marker."
+    show bgp ipv4 mvpn route-type 2 vrf all: "                                   ^\r\
+      \n% Invalid command at '^' marker."
+    show bgp ipv4 mvpn route-type 3 vrf all: "                                   ^\r\
+      \n% Invalid command at '^' marker."
+    show bgp ipv4 mvpn route-type 4 vrf all: "                                   ^\r\
+      \n% Invalid command at '^' marker."
+    show bgp ipv4 mvpn route-type 5 vrf all: "                                   ^\r\
+      \n% Invalid command at '^' marker."
+    show bgp ipv4 mvpn route-type 6 vrf all: "                                   ^\r\
+      \n% Invalid command at '^' marker."
+    show bgp ipv4 mvpn route-type 7 vrf all: "                                   ^\r\
+      \n% Invalid command at '^' marker."
+    show bgp ipv4 mvpn sa-ad detail vrf all: "                              ^\r\n\
+      % Invalid command at '^' marker."
+    show bgp l2vpn evpn neighbors: "                ^\r\n% Invalid command at '^'\
+      \ marker."
+    show bgp l2vpn evpn route-type 1: "                ^\r\n% Invalid command at '^'\
+      \ marker."
+    show bgp l2vpn evpn route-type 2: "                ^\r\n% Invalid command at '^'\
+      \ marker."
+    show bgp l2vpn evpn route-type 3: "                ^\r\n% Invalid command at '^'\
+      \ marker."
+    show bgp l2vpn evpn route-type 4: "                ^\r\n% Invalid command at '^'\
+      \ marker."
+    show bgp l2vpn evpn summary: "                ^\r\n% Invalid command at '^' marker."
     show bgp process vrf all: "\r\nBGP Process Information\r\nBGP Process ID     \
       \            : 8613\r\nBGP Protocol Started, reason:  : configuration\r\nBGP\
       \ Protocol Tag               : 65000\r\nBGP Protocol State             : Running\r\
@@ -36,7 +64,7 @@ execute:
       \n\r\n    Wait for IGP convergence is not configured\r\n\r\n\r\n    Nexthop\
       \ trigger-delay\r\n        critical 3000 ms\r\n        non-critical 10000 ms"
     show bgp vrf all all: "BGP routing table information for VRF default, address\
-      \ family IPv4 Unicast\r\nBGP table version is 6, local router ID is 10.2.2.2\r\
+      \ family IPv4 Unicast\r\nBGP table version is 8, local router ID is 10.2.2.2\r\
       \nStatus: s-suppressed, x-deleted, S-stale, d-dampened, h-history, *-valid,\
       \ >-best\r\nPath type: i-internal, e-external, c-confed, l-local, a-aggregate,\
       \ r-redist, I-injected\r\nOrigin codes: i - IGP, e - EGP, ? - incomplete, |\
@@ -54,25 +82,25 @@ execute:
       \r\nNexthop: 10.1.1.1, Flags: 0x1, Refcount: 1, IGP cost: 41\r\nIGP Route type:\
       \ 0, IGP preference: 110\r\nAttached nexthop: 10.0.2.1, Interface: Ethernet2/2\r\
       \nNexthop is not-attached not-local reachable not-labeled\r\nNexthop last resolved:\
-      \ 00:00:40, using 10.1.1.1/32\r\nMetric next advertise: Never\r\nRNH epoch:\
-      \ 2\r\nIPv6 Next-hop table\r\n\r\nNext Hop table for VRF default, address family\
+      \ 00:01:09, using 10.1.1.1/32\r\nMetric next advertise: Never\r\nRNH epoch:\
+      \ 4\r\nIPv6 Next-hop table\r\n\r\nNext Hop table for VRF default, address family\
       \ IPv6 Unicast:\r\nNext-hop trigger-delay(miliseconds)\r\n  Critical: 3000 Non-critical:\
       \ 10000\r\nIPv4 Next-hop table\r\nIPv6 Next-hop table"
     show bgp vrf all all summary: "BGP summary information for VRF default, address\
       \ family IPv4 Unicast\r\nBGP router identifier 10.2.2.2, local AS number 65000\r\
-      \nBGP table version is 6, IPv4 Unicast config peers 1, capable peers 1\r\n2\
+      \nBGP table version is 8, IPv4 Unicast config peers 1, capable peers 1\r\n2\
       \ network entries and 2 paths using 288 bytes of memory\r\nBGP attribute entries\
       \ [2/288], BGP AS path entries [0/0]\r\nBGP community entries [0/0], BGP clusterlist\
       \ entries [0/0]\r\n\r\nNeighbor        V    AS MsgRcvd MsgSent   TblVer  InQ\
-      \ OutQ Up/Down  State/PfxRcd\r\n10.1.1.1        4 65000    6306    5729    \
-      \    6    0    0    3d23h 1         \r\n\r\nBGP summary information for VRF\
+      \ OutQ Up/Down  State/PfxRcd\r\n10.1.1.1        4 65000    9591    8714    \
+      \    8    0    0    6d01h 1         \r\n\r\nBGP summary information for VRF\
       \ default, address family IPv6 Unicast"
     show bgp vrf default all neighbors: "BGP neighbor is 10.1.1.1,  remote AS 65000,\
       \ ibgp link, Peer index 1\r\n  BGP version 4, remote router ID 10.1.1.1\r\n\
-      \  BGP state = Established, up for 3d23h\r\n  Using loopback0 as update source\
-      \ for this peer\r\n  Last read 00:00:31, hold time = 180, keepalive interval\
-      \ is 60 seconds\r\n  Last written 00:00:30, keepalive timer expiry due 00:00:29\r\
-      \n  Received 6306 messages, 0 notifications, 0 bytes in queue\r\n  Sent 5729\
+      \  BGP state = Established, up for 6d01h\r\n  Using loopback0 as update source\
+      \ for this peer\r\n  Last read 00:00:32, hold time = 180, keepalive interval\
+      \ is 60 seconds\r\n  Last written 00:00:33, keepalive timer expiry due 00:00:26\r\
+      \n  Received 9591 messages, 0 notifications, 0 bytes in queue\r\n  Sent 8714\
       \ messages, 0 notifications, 0 bytes in queue\r\n  Connections established 1,\
       \ dropped 0\r\n  Last reset by us never, due to No error\r\n  Last reset by\
       \ peer never, due to No error\r\n\r\n  Neighbor capabilities:\r\n  Dynamic capability:\
@@ -88,18 +116,18 @@ execute:
       \ \r\n\r\n  Message statistics:\r\n                              Sent      \
       \         Rcvd\r\n  Opens:                         1                  1  \r\n\
       \  Notifications:                 0                  0  \r\n  Updates:     \
-      \                  2                  2  \r\n  Keepalives:                 5726\
-      \               6303  \r\n  Route Refresh:                 0               \
+      \                  2                  2  \r\n  Keepalives:                 8711\
+      \               9588  \r\n  Route Refresh:                 0               \
       \   0  \r\n  Capability:                    0                  0  \r\n  Total:\
-      \                      5729               6306  \r\n  Total bytes:         \
-      \     108847             119817  \r\n  Bytes in queue:                0    \
+      \                      8714               9591  \r\n  Total bytes:         \
+      \     165562             182232  \r\n  Bytes in queue:                0    \
       \              0  \r\n\r\n  For address family: IPv4 Unicast\r\n  BGP table\
-      \ version 6, neighbor version 6\r\n  1 accepted paths consume 80 bytes of memory\r\
+      \ version 8, neighbor version 8\r\n  1 accepted paths consume 80 bytes of memory\r\
       \n  1 sent paths\r\n  Third-party Nexthop will not be computed.\r\n\r\n  Local\
       \ host: 10.2.2.2, Local port: 179\r\n  Foreign host: 10.1.1.1, Foreign port:\
       \ 24407\r\n  fd = 60"
-    show bgp vrf default all neighbors 10.1.1.1 advertised-route: "\r\nPeer 10.1.1.1\
-      \ routes for address family IPv4 Unicast:\r\nBGP table version is 6, local router\
+    show bgp vrf default all neighbors 10.1.1.1 advertised-routes: "\r\nPeer 10.1.1.1\
+      \ routes for address family IPv4 Unicast:\r\nBGP table version is 8, local router\
       \ ID is 10.2.2.2\r\nStatus: s-suppressed, x-deleted, S-stale, d-dampened, h-history,\
       \ *-valid, >-best\r\nPath type: i-internal, e-external, c-confed, l-local, a-aggregate,\
       \ r-redist, I-injected\r\nOrigin codes: i - IGP, e - EGP, ? - incomplete, |\
@@ -135,7 +163,7 @@ execute:
       \ soft reconfiguration for IPv4 Label Unicast not enabled on 10.1.1.1\r\n\r\n\
       Inbound soft reconfiguration for L2VPN EVPN not enabled on 10.1.1.1"
     show bgp vrf default all neighbors 10.1.1.1 routes: "\r\nPeer 10.1.1.1 routes\
-      \ for address family IPv4 Unicast:\r\nBGP table version is 6, local router ID\
+      \ for address family IPv4 Unicast:\r\nBGP table version is 8, local router ID\
       \ is 10.2.2.2\r\nStatus: s-suppressed, x-deleted, S-stale, d-dampened, h-history,\
       \ *-valid, >-best\r\nPath type: i-internal, e-external, c-confed, l-local, a-aggregate,\
       \ r-redist, I-injected\r\nOrigin codes: i - IGP, e - EGP, ? - incomplete, |\
@@ -163,6 +191,12 @@ execute:
       \nkickstart variable = bootflash:/titanium-d1-kickstart.7.3.0.D1.1.bin\r\nsystem\
       \ variable = bootflash:/titanium-d1.7.3.0.D1.1.bin\r\nBoot POAP Disabled\r\n\
       No module boot variable set"
+    show fabric multicast globals: "                      ^\r\n% Invalid command at\
+      \ '^' marker."
+    show fabric multicast ipv4 l2-mroute vni all: "                      ^\r\n% Invalid\
+      \ command at '^' marker."
+    show fabric multicast ipv4 sa-ad-route vrf all: "                      ^\r\n%\
+      \ Invalid command at '^' marker."
     show feature: "Feature Name         Instance State \r\n-------------------- --------\
       \ -----\r\nbfd                  1        disabled\r\nbfd_app              1\
       \        disabled\r\nbgp                  1        enabled\r\nbulkstat     \
@@ -234,20 +268,47 @@ execute:
       \nvnseg_vlan           1        disabled\r\nvpc                  1        disabled\r\
       \nvrrp                 1        disabled\r\nvrrpv3               1        disabled\r\
       \nvtp                  1        disabled\r\nwccp                 1        disabled"
+    show forwarding distribution multicast route vrf all: "\r\nIPv4 Multicast Routing\
+      \ Table for table-id: 1\r\nTotal number of groups: 0\r\nLegend:\r\n   C = Control\
+      \ Route\r\n   D = Drop Route\r\n   G = Local Group (directly connected receivers)\r\
+      \n   O = Drop on RPF Fail\r\n   P = Punt to supervisor\r\n   d = Decap Route\r\
+      \n\r\n  (*, 224.0.0.0/4), RPF Interface: NULL, flags: D\r\n    Received Packets:\
+      \ 0 Bytes: 0 \r\n    Number of Outgoing Interfaces: 0\r\n    Null Outgoing Interface\
+      \ List\r\n\r\n  (*, 224.0.0.0/24), RPF Interface: NULL, flags: CP\r\n    Received\
+      \ Packets: 0 Bytes: 0 \r\n    Number of Outgoing Interfaces: 0\r\n    Null Outgoing\
+      \ Interface List\r\n\r\n  (*, 224.0.1.39/32), RPF Interface: NULL, flags: CP\r\
+      \n    Received Packets: 0 Bytes: 0 \r\n    Number of Outgoing Interfaces: 0\r\
+      \n    Null Outgoing Interface List\r\n\r\n  (*, 224.0.1.40/32), RPF Interface:\
+      \ NULL, flags: CP\r\n    Received Packets: 0 Bytes: 0 \r\n    Number of Outgoing\
+      \ Interfaces: 0\r\n    Null Outgoing Interface List\r\n\r\nIPv4 Multicast Routing\
+      \ Table for table-id: wildcard\r\nTotal number of groups: 4\r\nLegend:\r\n \
+      \  C = Control Route\r\n   D = Drop Route\r\n   G = Local Group (directly connected\
+      \ receivers)\r\n   O = Drop on RPF Fail\r\n   P = Punt to supervisor\r\n   d\
+      \ = Decap Route\r\n\r\n  (*, 224.0.0.0/4), RPF Interface: NULL, flags: D\r\n\
+      \    Received Packets: 0 Bytes: 0 \r\n    Number of Outgoing Interfaces: 0\r\
+      \n    Null Outgoing Interface List\r\n\r\n  (*, 224.0.0.0/24), RPF Interface:\
+      \ NULL, flags: CP\r\n    Received Packets: 0 Bytes: 0 \r\n    Number of Outgoing\
+      \ Interfaces: 0\r\n    Null Outgoing Interface List\r\n\r\n  (*, 224.0.1.39/32),\
+      \ RPF Interface: NULL, flags: CP\r\n    Received Packets: 0 Bytes: 0 \r\n  \
+      \  Number of Outgoing Interfaces: 0\r\n    Null Outgoing Interface List\r\n\r\
+      \n  (*, 224.0.1.40/32), RPF Interface: NULL, flags: CP\r\n    Received Packets:\
+      \ 0 Bytes: 0 \r\n    Number of Outgoing Interfaces: 0\r\n    Null Outgoing Interface\
+      \ List"
+    show hsrp all: "                ^\r\n% Invalid command at '^' marker."
     show install active: "Boot Images:\r\n        Kickstart Image: bootflash:/titanium-d1-kickstart.7.3.0.D1.1.bin\r\
       \n        System Image: bootflash:/titanium-d1.7.3.0.D1.1.bin\r\n\r\nActive\
       \ Packages:\r\n\r\nActive Packages on Module #2:\r\n\r\n\r\nActive Packages\
       \ on Module #3:\r\n\r\n\r\nActive Packages on Module #4:"
     show interface: "mgmt0 is up\r\nadmin state is up\r\n  Hardware: Ethernet, address:\
       \ 5e00.0001.0000 (bia 5e00.0001.0000)\r\n  MTU 1500 bytes, BW 1000000 Kbit,\
-      \ DLY 10 usec\r\n  reliability 14/255, txload 1/255, rxload 1/255\r\n  Encapsulation\
+      \ DLY 10 usec\r\n  reliability 22/255, txload 1/255, rxload 1/255\r\n  Encapsulation\
       \ ARPA, medium is broadcast\r\n  Port mode is routed\r\n  full-duplex, 1000\
       \ Mb/s\r\n  Auto-Negotiation is turned on\r\n  Auto-mdix is turned off\r\n \
-      \ EtherType is 0x0000 \r\n  1 minute input rate 64 bits/sec, 0 packets/sec\r\
-      \n  1 minute output rate 40 bits/sec, 0 packets/sec\r\n  Rx\r\n    101411 input\
-      \ packets 0 unicast packets 2 multicast packets\r\n    101409 broadcast packets\
-      \ 6492112 bytes\r\n  Tx\r\n    5729 output packets 0 unicast packets 5729 multicast\
-      \ packets\r\n    0 broadcast packets 1231727 bytes\r\n\r\nEthernet2/1 is down\
+      \ EtherType is 0x0000 \r\n  1 minute input rate 544 bits/sec, 0 packets/sec\r\
+      \n  1 minute output rate 24 bits/sec, 0 packets/sec\r\n  Rx\r\n    134476 input\
+      \ packets 0 unicast packets 3427 multicast packets\r\n    131049 broadcast packets\
+      \ 9288285 bytes\r\n  Tx\r\n    8715 output packets 0 unicast packets 8715 multicast\
+      \ packets\r\n    0 broadcast packets 1873717 bytes\r\n\r\nEthernet2/1 is down\
       \ (Administratively down)\r\nadmin state is down, Dedicated Interface\r\n  Hardware:\
       \  Ethernet, address: 0000.0000.002f (bia fa16.3e49.1c8e)\r\n  Internet Address\
       \ is 10.0.1.2/24\r\n  MTU 1500 bytes, BW 1000000 Kbit, DLY 10 usec\r\n  reliability\
@@ -255,8 +316,8 @@ execute:
       \n  Port mode is routed\r\n  auto-duplex, 1000 Mb/s\r\n  Beacon is turned off\r\
       \n  Auto-Negotiation is turned off\r\n  Input flow-control is off, output flow-control\
       \ is off\r\n  Auto-mdix is turned off\r\n  Switchport monitor is off \r\n  EtherType\
-      \ is 0x8100 \r\n  EEE (efficient-ethernet) : n/a\r\n  Last link flapped 00:00:44\r\
-      \n  Last clearing of \"show interface\" counters never\r\n  1 interface resets\r\
+      \ is 0x8100 \r\n  EEE (efficient-ethernet) : n/a\r\n  Last link flapped 00:01:21\r\
+      \n  Last clearing of \"show interface\" counters never\r\n  2 interface resets\r\
       \n  Load-Interval #1: 0 seconds\r\n    0 seconds input rate 0 bits/sec, 0 packets/sec\r\
       \n    0 seconds output rate 0 bits/sec, 0 packets/sec\r\n    input rate 0 bps,\
       \ 0 pps; output rate 0 bps, 0 pps\r\n  Load-Interval #2: 0 seconds\r\n    0\
@@ -278,7 +339,7 @@ execute:
       \ mode is routed\r\n  full-duplex, 1000 Mb/s\r\n  Beacon is turned off\r\n \
       \ Auto-Negotiation is turned off\r\n  Input flow-control is off, output flow-control\
       \ is off\r\n  Auto-mdix is turned off\r\n  Switchport monitor is off \r\n  EtherType\
-      \ is 0x8100 \r\n  EEE (efficient-ethernet) : n/a\r\n  Last link flapped 3d23h\r\
+      \ is 0x8100 \r\n  EEE (efficient-ethernet) : n/a\r\n  Last link flapped 6d01h\r\
       \n  Last clearing of \"show interface\" counters never\r\n  1 interface resets\r\
       \n  Load-Interval #1: 0 seconds\r\n    0 seconds input rate 0 bits/sec, 0 packets/sec\r\
       \n    0 seconds output rate 0 bits/sec, 0 packets/sec\r\n    input rate 0 bps,\
@@ -3563,8 +3624,8 @@ execute:
       \ is up\r\nadmin state is up\r\n  Hardware: Loopback\r\n  Internet Address is\
       \ 10.2.2.2/32\r\n  MTU 1500 bytes, BW 8000000 Kbit, DLY 5000 usec\r\n  reliability\
       \ 255/255, txload 1/255, rxload 1/255\r\n  Encapsulation LOOPBACK, medium is\
-      \ broadcast\r\n  Port mode is routed\r\n  Auto-mdix is turned off\r\n    12018\
-      \ packets input 600617 bytes\r\n    0 multicast frames 0 compressed\r\n    0\
+      \ broadcast\r\n  Port mode is routed\r\n  Auto-mdix is turned off\r\n    18276\
+      \ packets input 913352 bytes\r\n    0 multicast frames 0 compressed\r\n    0\
       \ input errors 0 frame 0 overrun 0 fifo\r\n    0 packets output 0 bytes 0 underruns\r\
       \n    0 output errors 0 collisions 0 fifo\r\n    0 out_carrier_errors\r\n\r\n\
       loopback1 is up\r\nadmin state is up\r\n  Hardware: Loopback\r\n  Internet Address\
@@ -4049,10 +4110,10 @@ execute:
       \n       + - Adjacencies synced via CFSoE\r\n       # - Adjacencies Throttled\
       \ for Glean\r\n\r\nIP ARP Table for context default\r\nTotal number of entries:\
       \ 1\r\nAddress         Age       MAC Address     Interface        Physical Interface\r\
-      \n10.0.2.1        00:08:13  fa16.3e11.7107  Ethernet2/2      Ethernet2/2"
+      \n10.0.2.1        00:12:22  fa16.3e11.7107  Ethernet2/2      Ethernet2/2"
     show ip arp statistics: "\r\nARP packet statistics for context default\r\n Sent:\r\
-      \n Total 620, Requests 614, Replies 2, Requests on L2 0, Replies on L2 0,\r\n\
-      \ Gratuitous 4, Tunneled 0, Dropped 0\r\n Send packet drops details:\r\n   \
+      \n Total 784, Requests 775, Replies 3, Requests on L2 0, Replies on L2 0,\r\n\
+      \ Gratuitous 6, Tunneled 0, Dropped 0\r\n Send packet drops details:\r\n   \
       \ MBUF operation failed               : 0\r\n    Context not yet created   \
       \          : 0\r\n    Invalid context                     : 0\r\n    Invalid\
       \ ifindex                     : 0\r\n    Invalid SRC IP                    \
@@ -4064,7 +4125,7 @@ execute:
       \ arp   :  0\r\n    Dest. unreachable for enhanced proxy:  0\r\n    Dest. on\
       \ L2 port being tracked      :  0\r\n    Invalid Local proxy arp           \
       \  :  0\r\n    Invalid proxy arp                   :  0\r\n   VIP is not active\
-      \                   :  0\r\n Received:\r\n Total 612, Requests 2, Replies 610,\
+      \                   :  0\r\n Received:\r\n Total 772, Requests 3, Replies 769,\
       \ Requests on L2 0, Replies on L2 0\r\n Proxy arp 0, Local-Proxy arp 0,  Enhanced\
       \ Proxy arp 0, Anycast proxy Proxy arp 0,  L2 Port-track Proxy arp 0,  Tunneled\
       \ 0, Fastpath 0, Snooped 0, Dropped 0, on Server Port 0\r\n Received packet\
@@ -4088,10 +4149,15 @@ execute:
       \ : 0\r\n    Requests came on a l2 interface     : 0\r\n    L2FM query failed\
       \ for a L2 Address  : 0\r\n    Dropping due to tunneling failures  : 0\r\n \
       \   INCOMPLETE entries drop count due to AM MTS threshold : 0\r\n\r\n ARP adjacency\
-      \ statistics\r\n\r\n Adds 2, Deletes 0, Timeouts 0"
+      \ statistics\r\n\r\n Adds 3, Deletes 0, Timeouts 0"
     show ip arp summary: "\r\nIP ARP Table - Adjacency Summary\r\n\r\n  Resolved \
       \  : 1\r\n  Incomplete : 0 (Throttled : 0)\r\n  Unknown    : 0\r\n  Total  \
       \    : 1"
+    show ip igmp groups vrf all: ''
+    show ip igmp interface vrf all: 'IGMP Interfaces for VRF "default", count: 0'
+    show ip igmp local-groups vrf all: "IGMP Locally Joined Group Membership for VRF\
+      \ \"default\"\r\nGroup Address    Source Address   Type     Interface   Last\
+      \ Reported"
     show ip igmp snooping: "Global IGMP Snooping Information:\r\n  IGMP Snooping enabled\r\
       \n  Optimised Multicast Flood (OMF) enabled\r\n  IGMPv1/v2 Report Suppression\
       \ enabled\r\n  IGMPv3 Report Suppression disabled\r\n  Link Local Groups Suppression\
@@ -4113,7 +4179,7 @@ execute:
       \ port): disabled\r\n  IP icmp port-unreachable: enabled\r\n  IP unicast reverse\
       \ path forwarding: none\r\n  IP load sharing: none \r\n  IP interface statistics\
       \ last reset: never\r\n  IP interface software stats: (sent/received/forwarded/originated/consumed)\r\
-      \n    Unicast packets    : 0/0/0/0/12018\r\n    Unicast bytes      : 0/0/0/0/600617\r\
+      \n    Unicast packets    : 0/0/0/0/18276\r\n    Unicast bytes      : 0/0/0/0/913352\r\
       \n    Multicast packets  : 0/0/0/0/0\r\n    Multicast bytes    : 0/0/0/0/0\r\
       \n    Broadcast packets  : 0/0/0/0/0\r\n    Broadcast bytes    : 0/0/0/0/0\r\
       \n    Labeled packets    : 0/0/0/0/0\r\n    Labeled bytes      : 0/0/0/0/0\r\
@@ -4145,9 +4211,9 @@ execute:
       \ enabled\r\n  IP unicast reverse path forwarding: none\r\n  IP load sharing:\
       \ none \r\n  IP interface statistics last reset: never\r\n  IP interface software\
       \ stats: (sent/received/forwarded/originated/consumed)\r\n    Unicast packets\
-      \    : 12026/110/0/12026/220\r\n    Unicast bytes      : 806569/9072/0/806569/18144\r\
-      \n    Multicast packets  : 39588/36427/0/39588/72850\r\n    Multicast bytes\
-      \    : 3420916/3647940/0/3420916/3647748\r\n    Broadcast packets  : 0/2/0/0/2\r\
+      \    : 12037/115/0/12037/230\r\n    Unicast bytes      : 807359/9488/0/807359/18976\r\
+      \n    Multicast packets  : 39617/36456/0/39617/72908\r\n    Multicast bytes\
+      \    : 3423474/3650824/0/3423474/3650632\r\n    Broadcast packets  : 0/2/0/0/2\r\
       \n    Broadcast bytes    : 0/373/0/0/373\r\n    Labeled packets    : 0/0/0/0/0\r\
       \n    Labeled bytes      : 0/0/0/0/0\r\n  WCCP Redirect outbound: disabled\r\
       \n  WCCP Redirect inbound: disabled\r\n  WCCP Redirect exclude: disabled\r\n\
@@ -4162,29 +4228,33 @@ execute:
       \ enabled\r\n  IP unicast reverse path forwarding: none\r\n  IP load sharing:\
       \ none \r\n  IP interface statistics last reset: never\r\n  IP interface software\
       \ stats: (sent/received/forwarded/originated/consumed)\r\n    Unicast packets\
-      \    : 6/12125/0/6/12232\r\n    Unicast bytes      : 439/643703/0/439/652515\r\
-      \n    Multicast packets  : 39584/36439/0/39584/72876\r\n    Multicast bytes\
-      \    : 3420704/3649192/0/3420704/3649096\r\n    Broadcast packets  : 0/2/0/0/2\r\
+      \    : 6261/18384/0/6261/18492\r\n    Unicast bytes      : 419868/974340/0/419868/983216\r\
+      \n    Multicast packets  : 60327/55588/0/60327/111174\r\n    Multicast bytes\
+      \    : 5208302/5557728/0/5208302/5557632\r\n    Broadcast packets  : 0/2/0/0/2\r\
       \n    Broadcast bytes    : 0/373/0/0/373\r\n    Labeled packets    : 0/0/0/0/0\r\
       \n    Labeled bytes      : 0/0/0/0/0\r\n  WCCP Redirect outbound: disabled\r\
       \n  WCCP Redirect inbound: disabled\r\n  WCCP Redirect exclude: disabled\r\n\
       \r\nIP Interface Status for VRF \"management\""
+    show ip mroute vrf all: IP Multicast Routing Table for VRF "default"
+    show ip msdp peer vrf all: "                   ^\r\n% Invalid command at '^' marker."
+    show ip msdp sa-cache detail vrf all: "                   ^\r\n% Invalid command\
+      \ at '^' marker."
     show ip ospf database external detail vrf all: '        OSPF Router with ID (10.2.2.2)
       (Process ID 1 VRF default)'
     show ip ospf database network detail vrf all: "        OSPF Router with ID (10.2.2.2)\
       \ (Process ID 1 VRF default)\r\n\r\n                Network Link States (Area\
-      \ 0.0.0.0)\r\n\r\n   LS age: 1065\r\n   Options: 0x2 (No TOS-capability, No\
+      \ 0.0.0.0)\r\n\r\n   LS age: 1674\r\n   Options: 0x2 (No TOS-capability, No\
       \ DC)\r\n   LS Type: Network Links\r\n   Link State ID: 10.0.2.2 (Designated\
-      \ Router address)\r\n   Advertising Router: 10.2.2.2\r\n   LS Seq Number: 0x800000be\r\
-      \n   Checksum: 0xe67a\r\n   Length: 32\r\n   Network Mask: /24\r\n         Attached\
+      \ Router address)\r\n   Advertising Router: 10.2.2.2\r\n   LS Seq Number: 0x80000120\r\
+      \n   Checksum: 0x21dd\r\n   Length: 32\r\n   Network Mask: /24\r\n         Attached\
       \ Router: 10.2.2.2\r\n         Attached Router: 10.1.1.1"
     show ip ospf database opaque-area detail vrf all: '        OSPF Router with ID
       (10.2.2.2) (Process ID 1 VRF default)'
     show ip ospf database router detail vrf all: "        OSPF Router with ID (10.2.2.2)\
       \ (Process ID 1 VRF default)\r\n\r\n                Router Link States (Area\
-      \ 0.0.0.0)\r\n\r\n   LS age: 18\r\n   Options: 0x22 (No TOS-capability, DC)\r\
+      \ 0.0.0.0)\r\n\r\n   LS age: 69\r\n   Options: 0x22 (No TOS-capability, DC)\r\
       \n   LS Type: Router Links\r\n   Link State ID: 10.1.1.1 \r\n   Advertising\
-      \ Router: 10.1.1.1\r\n   LS Seq Number: 0x800000b3\r\n   Checksum: 0x69a7\r\n\
+      \ Router: 10.1.1.1\r\n   LS Seq Number: 0x80000111\r\n   Checksum: 0xab07\r\n\
       \   Length: 60\r\n    Number of links: 3\r\n\r\n     Link connected to: a Stub\
       \ Network\r\n      (Link ID) Network/Subnet Number: 10.1.1.1\r\n      (Link\
       \ Data) Network Mask: 255.255.255.255\r\n       Number of TOS metrics: 0\r\n\
@@ -4194,9 +4264,9 @@ execute:
       \ Metric: 1\r\n\r\n     Link connected to: a Transit Network\r\n      (Link\
       \ ID) Designated Router address: 10.0.2.2\r\n      (Link Data) Router Interface\
       \ address: 10.0.2.1\r\n       Number of TOS metrics: 0\r\n         TOS   0 Metric:\
-      \ 1\r\n\r\n   LS age: 57\r\n   Options: 0x2 (No TOS-capability, No DC)\r\n \
-      \  LS Type: Router Links\r\n   Link State ID: 10.2.2.2 \r\n   Advertising Router:\
-      \ 10.2.2.2\r\n   LS Seq Number: 0x800000c1\r\n   Checksum: 0xf914\r\n   Length:\
+      \ 1\r\n\r\n   LS age: 107\r\n   Options: 0x2 (No TOS-capability, No DC)\r\n\
+      \   LS Type: Router Links\r\n   Link State ID: 10.2.2.2 \r\n   Advertising Router:\
+      \ 10.2.2.2\r\n   LS Seq Number: 0x80000126\r\n   Checksum: 0x2e7a\r\n   Length:\
       \ 48\r\n    Number of links: 2\r\n\r\n     Link connected to: a Stub Network\r\
       \n      (Link ID) Network/Subnet Number: 10.2.2.2\r\n      (Link Data) Network\
       \ Mask: 255.255.255.255\r\n       Number of TOS metrics: 0\r\n         TOS \
@@ -4220,7 +4290,7 @@ execute:
       \ 1\r\n    Designated Router ID: 10.2.2.2, address: 10.0.2.2\r\n    Backup Designated\
       \ Router ID: 10.1.1.1, address: 10.0.2.1\r\n    1 Neighbors, flooding to 1,\
       \ adjacent with 1\r\n    Timer intervals: Hello 10, Dead 40, Wait 40, Retransmit\
-      \ 5\r\n      Hello timer due in 00:00:01\r\n    No authentication\r\n    Number\
+      \ 5\r\n      Hello timer due in 00:00:05\r\n    No authentication\r\n    Number\
       \ of opaque link LSAs: 0, checksum sum 0\r\n loopback0 is up, line protocol\
       \ is up\r\n    IP address 10.2.2.2/32\r\n    Process ID 1 VRF default, area\
       \ 0.0.0.0\r\n    Enabled by interface configuration\r\n    State LOOPBACK, Network\
@@ -4235,10 +4305,10 @@ execute:
       \ type BROADCAST"
     show ip ospf neighbors detail vrf all: " Neighbor 10.1.1.1, interface address\
       \ 10.0.2.1\r\n    Process ID 1 VRF default, in area 0.0.0.0 via interface Ethernet2/2\r\
-      \n    State is FULL, 5 state changes, last change 3d23h\r\n    Neighbor priority\
+      \n    State is FULL, 5 state changes, last change 6d01h\r\n    Neighbor priority\
       \ is 1\r\n    DR is 10.0.2.2 BDR is 10.0.2.1\r\n    Hello options 0x12, dbd\
       \ options 0x52\r\n    Last non-hello packet received never\r\n      Dead timer\
-      \ due in 00:00:40"
+      \ due in 00:00:36"
     show ip ospf sham-links vrf all: "                        ^\r\n% Invalid command\
       \ at '^' marker."
     show ip ospf virtual-links vrf all: ''
@@ -4257,31 +4327,96 @@ execute:
       \ 0\r\n Number of areas is 1, 1 normal, 0 stub, 0 nssa\r\n Number of active\
       \ areas is 1, 1 normal, 0 stub, 0 nssa\r\n Install discard route for summarized\
       \ external routes.\r\n Install discard route for summarized internal routes.\r\
-      \n   Area BACKBONE(0.0.0.0) \r\n        Area has existed for 3d23h\r\n     \
+      \n   Area BACKBONE(0.0.0.0) \r\n        Area has existed for 6d01h\r\n     \
       \   Interfaces in this area: 3 Active interfaces: 2\r\n        Passive interfaces:\
       \ 0  Loopback interfaces: 1\r\n        No authentication available\r\n     \
-      \   SPF calculation has run 5 times\r\n         Last SPF ran for 0.000182s\r\
-      \n        Area ranges are\r\n        Number of LSAs: 3, checksum sum 0x24935"
+      \   SPF calculation has run 9 times\r\n         Last SPF ran for 0.000131s\r\
+      \n        Area ranges are\r\n        Number of LSAs: 3, checksum sum 0xfb5e"
+    show ip pim df vrf all: "                   ^\r\n% Invalid command at '^' marker."
+    show ip pim group-range vrf all: "                   ^\r\n% Invalid command at\
+      \ '^' marker."
+    show ip pim interface vrf all: "                   ^\r\n% Invalid command at '^'\
+      \ marker."
+    show ip pim neighbor vrf all: "                   ^\r\n% Invalid command at '^'\
+      \ marker."
+    show ip pim policy statistics register-policy vrf all: "                   ^\r\
+      \n% Invalid command at '^' marker."
+    show ip pim route vrf all: "                   ^\r\n% Invalid command at '^' marker."
+    show ip pim rp vrf all: "                   ^\r\n% Invalid command at '^' marker."
+    show ip pim vrf all detail: "                   ^\r\n% Invalid command at '^'\
+      \ marker."
+    show ip prefix-list: ''
     show ip route vrf all: "IP Route Table for VRF \"default\"\r\n'*' denotes best\
       \ ucast next-hop\r\n'**' denotes best mcast next-hop\r\n'[x/y]' denotes [preference/metric]\r\
       \n'%<string>' in via output denotes VRF <string>\r\n\r\n10.0.1.0/24, ubest/mbest:\
-      \ 1/0\r\n    *via 10.0.2.1, Eth2/2, [110/41], 00:01:00, ospf-1, intra\r\n10.0.2.0/24,\
-      \ ubest/mbest: 1/0, attached\r\n    *via 10.0.2.2, Eth2/2, [0/0], 3d23h, direct\r\
+      \ 1/0\r\n    *via 10.0.2.1, Eth2/2, [110/41], 00:02:11, ospf-1, intra\r\n10.0.2.0/24,\
+      \ ubest/mbest: 1/0, attached\r\n    *via 10.0.2.2, Eth2/2, [0/0], 6d01h, direct\r\
       \n10.0.2.2/32, ubest/mbest: 1/0, attached\r\n    *via 10.0.2.2, Eth2/2, [0/0],\
-      \ 3d23h, local\r\n10.1.1.1/32, ubest/mbest: 1/0\r\n    *via 10.0.2.1, Eth2/2,\
-      \ [110/41], 00:01:00, ospf-1, intra\r\n10.2.2.2/32, ubest/mbest: 2/0, attached\r\
-      \n    *via 10.2.2.2, Lo0, [0/0], 3d23h, local\r\n    *via 10.2.2.2, Lo0, [0/0],\
-      \ 3d23h, direct\r\n10.11.11.11/32, ubest/mbest: 1/0\r\n    *via 10.1.1.1, [200/0],\
-      \ 00:01:00, bgp-65000, internal, tag 65000, \r\n10.22.22.22/32, ubest/mbest:\
-      \ 2/0, attached\r\n    *via 10.22.22.22, Lo1, [0/0], 3d23h, local\r\n    *via\
-      \ 10.22.22.22, Lo1, [0/0], 3d23h, direct"
+      \ 6d01h, local\r\n10.1.1.1/32, ubest/mbest: 1/0\r\n    *via 10.0.2.1, Eth2/2,\
+      \ [110/41], 00:02:11, ospf-1, intra\r\n10.2.2.2/32, ubest/mbest: 2/0, attached\r\
+      \n    *via 10.2.2.2, Lo0, [0/0], 6d01h, local\r\n    *via 10.2.2.2, Lo0, [0/0],\
+      \ 6d01h, direct\r\n10.11.11.11/32, ubest/mbest: 1/0\r\n    *via 10.1.1.1, [200/0],\
+      \ 00:02:09, bgp-65000, internal, tag 65000, \r\n10.22.22.22/32, ubest/mbest:\
+      \ 2/0, attached\r\n    *via 10.22.22.22, Lo1, [0/0], 6d01h, local\r\n    *via\
+      \ 10.22.22.22, Lo1, [0/0], 6d01h, direct"
+    show ip static-route: ''
+    show ip static-route multicast vrf all: ''
+    show ipv6 icmp neighbor detail vrf all: "\r\nFlags: + - Adjacencies synced via\
+      \ CFSoE\r\n       # - Adjacencies Throttled for Glean\r\n\r\nICMPv6 Adjacency\
+      \ Table for all VRFs \r\nAddress         Age       MAC Address     State   \
+      \   Interface  Phy-Interface   Vinci"
     show ipv6 interface vrf all: "IPv6 Interface Status for VRF \"default\"\r\n\r\n\
       IPv6 Interface Status for VRF \"management\""
+    show ipv6 mld groups vrf all: MLD Connected Group Membership for VRF "default"
+      - 0 total entries
+    show ipv6 mld interface vrf all: ''
+    show ipv6 mld local-groups vrf all: "MLD Locally Joined Group Membership for VRF\
+      \ \"default\"\r\nGroup   Type     Interface   Last Reported"
+    show ipv6 mroute vrf all: IPv6 Multicast Routing Table for VRF "default"
+    show ipv6 nd interface vrf all: ''
+    show ipv6 neighbor detail vrf all: "No. of Adjacency hit with type INVALID: Packet\
+      \ count 0, Byte count 0\r\nNo. of Adjacency hit with type GLOBAL DROP: Packet\
+      \ count 0, Byte count 0\r\nNo. of Adjacency hit with type GLOBAL PUNT: Packet\
+      \ count 0, Byte count 0\r\nNo. of Adjacency hit with type GLOBAL GLEAN: Packet\
+      \ count 0, Byte count 0\r\nNo. of Adjacency hit with type GLEAN: Packet count\
+      \ 0, Byte count 0\r\nNo. of Adjacency hit with type NORMAL: Packet count 0,\
+      \ Byte count 0\r\n\r\nAdjacency statistics last updated before: never\r\n\r\n\
+      IPv6 Adjacency Table for all VRFs\r\nTotal number of entries: 0"
+    show ipv6 pim df vrf all: "                     ^\r\n% Invalid command at '^'\
+      \ marker."
+    show ipv6 pim group-range vrf all: "                     ^\r\n% Invalid command\
+      \ at '^' marker."
+    show ipv6 pim interface vrf all: "                     ^\r\n% Invalid command\
+      \ at '^' marker."
+    show ipv6 pim neighbor vrf all: "                     ^\r\n% Invalid command at\
+      \ '^' marker."
+    show ipv6 pim route vrf all: "                     ^\r\n% Invalid command at '^'\
+      \ marker."
+    show ipv6 pim rp vrf all: "                     ^\r\n% Invalid command at '^'\
+      \ marker."
+    show ipv6 prefix-list: ''
     show ipv6 route vrf all: "IPv6 Routing Table for VRF \"default\"\r\n'*' denotes\
       \ best ucast next-hop\r\n'**' denotes best mcast next-hop\r\n'[x/y]' denotes\
       \ [preference/metric]\r\n\r\n\r\nIPv6 Routing Table for VRF \"management\"\r\
       \n'*' denotes best ucast next-hop\r\n'**' denotes best mcast next-hop\r\n'[x/y]'\
       \ denotes [preference/metric]"
+    show ipv6 routers vrf all: ''
+    show ipv6 static-route: IPv6 Configured Static Routes for VRF "default"(1)
+    show ipv6 static-route multicast vrf all: "IPv6 Configured Static Routes for VRF\
+      \ \"default\"(1)\r\n\r\n\r\nIPv6 Configured Static Routes for VRF \"management\"\
+      (2)"
+    show l2route evpn ethernet-segment all: "                            ^\r\n% Invalid\
+      \ command at '^' marker."
+    show l2route fl all: "                       ^\r\n% Invalid command at '^' marker."
+    show l2route mac all detail: "                       ^\r\n% Invalid command at\
+      \ '^' marker."
+    show l2route mac-ip all detail: "                       ^\r\n% Invalid command\
+      \ at '^' marker."
+    show l2route summary: "L2ROUTE Summary\r\nTotal Memory: 0           \r\nNumber\
+      \ of Converged Tables: 40"
+    show l2route topology detail: "Topology ID   Topology Name   Attributes\r\n-----------\
+      \   -------------   ----------\r\n4294967294    GLOBAL          N/A       \r\
+      \n4294967295    ALL             N/A"
     show module: "Mod  Ports  Module-Type                         Model          \
       \    Status\r\n---  -----  ----------------------------------- ------------------\
       \ ----------\r\n1    0      NX-OSv Supervisor Module            N7K-SUP1   \
@@ -4300,16 +4435,28 @@ execute:
       2    02-00-0c-00-02-00 to 02-00-0c-00-02-7f  TM00010000C\r\n3    02-00-0c-00-03-00\
       \ to 02-00-0c-00-03-7f  TM00010000D\r\n4    02-00-0c-00-04-00 to 02-00-0c-00-04-7f\
       \  TM00010000E\r\n\r\n* this terminal session"
+    show ntp peer-status: ''
+    show ntp peers: ''
+    show nve ethernet-segment: "                ^\r\n% Invalid command at '^' marker."
+    show nve multisite dci-links: "                ^\r\n% Invalid command at '^' marker."
+    show nve multisite fabric-links: "                ^\r\n% Invalid command at '^'\
+      \ marker."
+    show nve peers: "                ^\r\n% Invalid command at '^' marker."
+    show nve vni: "                ^\r\n% Invalid command at '^' marker."
+    show nve vni ingress-replication: "                ^\r\n% Invalid command at '^'\
+      \ marker."
+    show nve vni summary: "                ^\r\n% Invalid command at '^' marker."
     show redundancy status: "Redundancy mode\r\n---------------\r\n      administrative:\
       \   HA\r\n         operational:   None\r\n\r\nThis supervisor (sup-1)\r\n-----------------------\r\
       \n    Redundancy state:   Active\r\n    Supervisor state:   Active\r\n     \
       \ Internal state:   Active with no standby\r\n\r\nOther supervisor (sup-1)\r\
       \n------------------------\r\n    Redundancy state:   N/A\r\n\r\n    Supervisor\
       \ state:   N/A\r\n      Internal state:   N/A\r\n\r\nSystem start time:    \
-      \      Fri Jan 18 20:43:38 2019\r\n\r\nSystem uptime:              3 days, 23\
-      \ hours, 27 minutes, 58 seconds\r\nKernel uptime:              3 days, 23 hours,\
-      \ 29 minutes, 9 seconds\r\nActive supervisor uptime:   3 days, 23 hours, 27\
-      \ minutes, 58 seconds"
+      \      Fri Jan 18 20:43:38 2019\r\n\r\nSystem uptime:              6 days, 1\
+      \ hours, 14 minutes, 19 seconds\r\nKernel uptime:              6 days, 1 hours,\
+      \ 15 minutes, 30 seconds\r\nActive supervisor uptime:   6 days, 1 hours, 14\
+      \ minutes, 19 seconds"
+    show route-map: ''
     show routing ipv6 vrf all: "IPv6 Routing Table for VRF \"default\"\r\n'*' denotes\
       \ best ucast next-hop\r\n'**' denotes best mcast next-hop\r\n'[x/y]' denotes\
       \ [preference/metric]\r\n\r\n\r\nIPv6 Routing Table for VRF \"management\"\r\
@@ -4318,19 +4465,19 @@ execute:
     show routing vrf all: "IP Route Table for VRF \"default\"\r\n'*' denotes best\
       \ ucast next-hop\r\n'**' denotes best mcast next-hop\r\n'[x/y]' denotes [preference/metric]\r\
       \n'%<string>' in via output denotes VRF <string>\r\n\r\n10.0.1.0/24, ubest/mbest:\
-      \ 1/0\r\n    *via 10.0.2.1, Eth2/2, [110/41], 00:00:41, ospf-1, intra\r\n10.0.2.0/24,\
-      \ ubest/mbest: 1/0, attached\r\n    *via 10.0.2.2, Eth2/2, [0/0], 3d23h, direct\r\
+      \ 1/0\r\n    *via 10.0.2.1, Eth2/2, [110/41], 00:01:12, ospf-1, intra\r\n10.0.2.0/24,\
+      \ ubest/mbest: 1/0, attached\r\n    *via 10.0.2.2, Eth2/2, [0/0], 6d01h, direct\r\
       \n10.0.2.2/32, ubest/mbest: 1/0, attached\r\n    *via 10.0.2.2, Eth2/2, [0/0],\
-      \ 3d23h, local\r\n10.1.1.1/32, ubest/mbest: 1/0\r\n    *via 10.0.2.1, Eth2/2,\
-      \ [110/41], 00:00:41, ospf-1, intra\r\n10.2.2.2/32, ubest/mbest: 2/0, attached\r\
-      \n    *via 10.2.2.2, Lo0, [0/0], 3d23h, local\r\n    *via 10.2.2.2, Lo0, [0/0],\
-      \ 3d23h, direct\r\n10.11.11.11/32, ubest/mbest: 1/0\r\n    *via 10.1.1.1, [200/0],\
-      \ 00:00:41, bgp-65000, internal, tag 65000, \r\n10.22.22.22/32, ubest/mbest:\
-      \ 2/0, attached\r\n    *via 10.22.22.22, Lo1, [0/0], 3d23h, local\r\n    *via\
-      \ 10.22.22.22, Lo1, [0/0], 3d23h, direct"
-    show running-config: " \r\r\n\r\n!Command: show running-config\r\n!Time: Tue Jan\
-      \ 22 20:11:23 2019\r\n\r\nversion 7.3(0)D1(1)\r\npower redundancy-mode redundant\r\
-      \nlicense grace-period\r\n\r\nhostname nx-osv-1\r\nvdc nx-osv-1 id 1\r\n  limit-resource\
+      \ 6d01h, local\r\n10.1.1.1/32, ubest/mbest: 1/0\r\n    *via 10.0.2.1, Eth2/2,\
+      \ [110/41], 00:01:12, ospf-1, intra\r\n10.2.2.2/32, ubest/mbest: 2/0, attached\r\
+      \n    *via 10.2.2.2, Lo0, [0/0], 6d01h, local\r\n    *via 10.2.2.2, Lo0, [0/0],\
+      \ 6d01h, direct\r\n10.11.11.11/32, ubest/mbest: 1/0\r\n    *via 10.1.1.1, [200/0],\
+      \ 00:01:10, bgp-65000, internal, tag 65000, \r\n10.22.22.22/32, ubest/mbest:\
+      \ 2/0, attached\r\n    *via 10.22.22.22, Lo1, [0/0], 6d01h, local\r\n    *via\
+      \ 10.22.22.22, Lo1, [0/0], 6d01h, direct"
+    show running-config: "\r\n!Command: show running-config\r\n!Time: Thu Jan 24 21:58:22\
+      \ 2019\r\n\r\nversion 7.3(0)D1(1)\r\npower redundancy-mode redundant\r\nlicense\
+      \ grace-period\r\n\r\nhostname nx-osv-1\r\nvdc nx-osv-1 id 1\r\n  limit-resource\
       \ module-type m1 m1xl m2xl f2e \r\n  allocate interface Ethernet2/1-48\r\n \
       \ allocate interface Ethernet3/1-48\r\n  allocate interface Ethernet4/1-48\r\
       \n  limit-resource vlan minimum 16 maximum 4094\r\n  limit-resource vrf minimum\
@@ -4504,14 +4651,16 @@ execute:
       \ unicast\r\n    network 10.22.22.22/32\r\n  neighbor 10.1.1.1\r\n    remote-as\
       \ 65000\r\n    update-source loopback0\r\n    address-family ipv4 unicast\r\n\
       no logging console"
+    show running-config nv overlay: "                               ^\r\n% Invalid\
+      \ command at '^' marker."
     show running-config | inc peer-policy: ''
     show running-config | inc peer-session: ''
     show vdc detail: "\r\nSwitchwide mode is m1 f1 m1xl f2 m2xl f2e f3 m3 \r\n\r\n\
       vdc id: 1\r\nvdc name: nx-osv-1\r\nvdc state: active\r\nvdc mac address: fa:16:3e:49:1c:bc\r\
       \nvdc ha policy: RELOAD\r\nvdc dual-sup ha policy: SWITCHOVER\r\nvdc boot Order:\
       \ 1\r\nvdc create time: Fri Jan 18 20:43:38 2019\r\nvdc reload count: 0\r\n\
-      vdc uptime: 3 day(s), 23 hour(s), 27 minute(s), 57 second(s)\r\nvdc restart\
-      \ count: 0\r\nvdc type: Ethernet\r\nvdc supported linecards: m1 m1xl m2xl f2e"
+      vdc uptime: 6 day(s), 1 hour(s), 14 minute(s), 17 second(s)\r\nvdc restart count:\
+      \ 0\r\nvdc type: Ethernet\r\nvdc supported linecards: m1 m1xl m2xl f2e"
     show vdc membership status: "Flags : b - breakout port\r\n---------------------------------\r\
       \n\r\nvdc_id: 0 vdc_name: Unallocated interfaces:\r\nPort        Status    \
       \  \r\n----        ----------  \r\n\r\nvdc_id: 1 vdc_name: nx-osv-1 interfaces:\r\
@@ -4566,7 +4715,7 @@ execute:
       \  cisco NX-OSv Chassis (\"NX-OSv Supervisor Module\")\r\n  QEMU Virtual CPU\
       \ version 2.5 with 3064740 kB of memory.\r\n  Processor Board ID TM00010000B\r\
       \n\r\n  Device name: nx-osv-1\r\n  bootflash:    3184776 kB\r\n\r\nKernel uptime\
-      \ is 3 day(s), 23 hour(s), 29 minute(s), 9 second(s)\r\n\r\n\r\nplugin\r\n \
+      \ is 6 day(s), 1 hour(s), 15 minute(s), 29 second(s)\r\n\r\n\r\nplugin\r\n \
       \ Core Plugin, Ethernet Plugin\r\n\r\nActive Package(s)"
     show vlan: "\r\nVLAN Name                             Status    Ports\r\n----\
       \ -------------------------------- --------- -------------------------------\r\
