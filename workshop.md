@@ -80,7 +80,7 @@ The first step is to learn the good state of the devices.
 
 # This is needed as we are using our Mocked device. When Genie cli is used with
 # a real device there is no need to have these environemnt variable.
-export unicon_replay=~/devnet-2595/workshop/mocked_devices/initial_recording
+export unicon_replay=~/workspace/devnet-2595/workshop/mocked_devices/initial_recording
 export unicon_speed=10
 
 genie learn ospf interface bgp platform --testbed-file testbed.yaml --output learnt
@@ -127,7 +127,7 @@ what happened without going to the previous step?
 
 # This is needed as we are using our Mocked device. When Genie cli is used with
 # a real device there is no need to have this environemnt variable.
-export unicon_replay=~/devnet-2595/workshop/mocked_devices/disaster_recording
+export unicon_replay=~/workspace/devnet-2595/workshop/mocked_devices/disaster_recording
 
 genie learn ospf interface bgp platform --testbed-file testbed.yaml --output disaster
 ```
@@ -212,7 +212,7 @@ You can now start the script.
 
 # This is needed as we are using our Mocked device. When Genie cli is used with
 # a real device there is no need to have this environemnt variable.
-export unicon_replay=~/devnet-2595/workshop/mocked_devices/initial_recording
+export unicon_replay=~/workspace/devnet-2595/workshop/mocked_devices/initial_recording
 
 cd robot_initial_snapshot
 robot --outputdir run robot_initial_snapshot.robot
@@ -256,7 +256,7 @@ You can now start the script.
 
 # This is needed as we are using our Mocked device. When Genie cli is used with
 # a real device there is no need to have this environemnt variable.
-export unicon_replay=~/devnet-2595/workshop/mocked_devices/disaster_recording
+export unicon_replay=~/workspace/devnet-2595/workshop/mocked_devices/disaster_recording
 
 cd ../robot_compare_snapshot
 robot --outputdir run compare_snapshot.robot
@@ -351,7 +351,7 @@ The script : `bonus_robot/verify_count.robot` does the following:
 
 # This is needed as we are using our Mocked device. When Genie cli is used with
 # a real device there is no need to have this environemnt variable.
-export unicon_replay=~/devnet-2595/workshop/mocked_devices/bonus_recording
+export unicon_replay=~/workspace/devnet-2595/workshop/mocked_devices/bonus_recording
 
 cd bonus_robot
 robot --outputdir run verify_count.robot

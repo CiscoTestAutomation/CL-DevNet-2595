@@ -45,3 +45,8 @@ Verify the counts of Ospf 'full' neighbors for nx-osv-1&csr1000v-1
 Verify the counts of 'up' Interace for nx-osv-1&csr1000v-1
     verify count "4" "interface up" on device "nx-osv-1"
     verify count "5" "interface up" on device "csr1000v-1"
+
+# Verify Interfaces
+Failing example
+    verify count "1" "interface up" on device "nx-osv-1"
+    verify count "1" "interface up" on device "csr1000v-1"
