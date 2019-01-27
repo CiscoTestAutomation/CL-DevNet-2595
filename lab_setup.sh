@@ -5,7 +5,7 @@ mkdir -p ~/workspace/devnet-2595
 cd ~/workspace/devnet-2595
 
 # create python virtual environment
-~/.pyenv/versions/3.6.4/bin/pyvenv .
+~/.pyenv/versions/3.6.7/bin/python -m venv .
 #python3.4 -m venv .
 
 # activate virtual environment
