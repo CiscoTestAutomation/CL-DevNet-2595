@@ -1,5 +1,10 @@
 #! /bin/bash
 
+# install pyenv and python
+brew install pyenv
+sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
+pyenv install 3.6.7
+
 # create a development directory
 mkdir -p ~/workspace/devnet-2595
 cd ~/workspace/devnet-2595
@@ -19,4 +24,3 @@ pip install genie genie.libs.robot
 
 # clone this repo
 git clone https://github.com/CiscoTestAutomation/CL-DevNet-2595.git workshop
-
