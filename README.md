@@ -43,7 +43,7 @@ In a new shell window:
 ```bash
 # create a development directory
 cd ~/workspace
-mkdir ~/devnet-2595
+mkdir devnet-2595
 cd devnet-2595
 
 # create python virtual environment
