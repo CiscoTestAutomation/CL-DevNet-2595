@@ -12,7 +12,7 @@ This workshop can be completed at home; as all devices are included in this work
 - Cisco Live Europe: https://ciscolive.cisco.com/emea/
 - pyATS/Genie Portal: https://developer.cisco.com/pyats/
 - Genie Documentation: https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/index.html
-  - Genie CLI: https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli.html
+  - Genie CLI: https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli/index.html
   - RobotFramework Keywords: https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/robot.html
   - Triggers, Verifications, Models: https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/genie_libs/index.html
 - pyATS Documentation: https://developer.cisco.com/docs/pyats/
