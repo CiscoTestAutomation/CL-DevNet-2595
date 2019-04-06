@@ -4,12 +4,12 @@
 
 In an effort to limit the hardware requirement for this workshop, we are going
 to be using **mocked devices**. They behave like *"simulated devices"*, but have
-limited interactability.
+limited interactivity.
 
 Note that this workshop does work on actual live devices - as long as you have
 the same topology and configuration.
 
-In otherwords, consider all calls to `mock_device_cli` be what you would've
+In other words, consider all calls to `mock_device_cli` be what you would've
 typically done to `telnet` or `ssh` to your device's console.
 
 Type `help` in the device prompt to show the list of supported commands. Note
@@ -91,7 +91,7 @@ Let's see how we handle this in 2019 with Genie!
 
 [Genie offers command line tools](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli.html)
 that allows the user to manage their network whilst leveraging the power of
-Genie Python libraries, without prerequisite understanding in Python or
+Genie Python libraries, without any prerequisite understanding in Python or
 automation.
 
 The first step is to learn the good state of the devices.
@@ -114,7 +114,7 @@ into a folder called `learnt`.
 
 *Consider this as the sane state snapshot for the testbed you are in charge of.*
 
-Internally, Genie uses its [Models](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/genie_libs/#/models).
+Internally, Genie uses its [Models](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/genie_libs/#/models)
 to decide which commands to issue, and what to store. Genie feature models
 are agnostic across OS, platforms and management protocols (eg, CLI/NETCONF).
 
@@ -153,8 +153,8 @@ export unicon_replay=~/workspace/devnet-2595/workshop/mocked_devices/disaster_re
 genie learn ospf interface bgp platform --testbed-file testbed.yaml --output disaster
 ```
 
-You now have a new snapshot of of how your devices are behaving in its
-disastrous state, under `disaster` folder.
+You now have a new snapshot of how your devices are behaving in its
+disastrous state, under the `disaster` folder.
 
 Now, perform a diff of the states before and after disaster occurance.
 
@@ -221,10 +221,10 @@ power of Genie models.
 
 Our Workshop Robot script tackles the same challenge as earlier:
 
-- learn the good state of the network
-- rerun periodically or when a disaster happen to figure out what has happened.
+- Learn the good state of the network
+- Rerun periodically or when a disaster occurs to figure out what happened
 
-With an editor, open the script below and examine it's content:
+With an editor, open the script below and examine its content:
 
 - `robot_initial_snapshot/robot_initial_snapshot.robot`
 
@@ -233,9 +233,9 @@ Without much effort, you should see that this script does the following:
 
 * Load Genie Library
 * Connect to the two devices
-* Learn bgp, interface, platform, ospf and the device configuration and save it to file.
+* Learn BGP, interface, platform, OSF and the device configuration and save it to file
 
-Let's run the script
+Let's run the script:
 
 ```bash
 
@@ -264,19 +264,19 @@ are now ready for a disaster to happen!
 **Disaster!**
 
 In the previous step we've taken a snapshot of our network when it was
-performing as expected. We will now take a new snapshot and compare with this
+performing as expected. We will now take a new snapshot and compare it with the
 previous good snapshot.
 
-With an editor open the script below, and examine it's content:
+With an editor open the script below, and examine its content:
 
 `robot_compare_snapshot/compare_snapshot.robot`
 
-This is the 2nd RobotFramework based script, which upon running, will:
+This is the 2nd RobotFramework based script which, upon running, will:
 
 * Load Genie Library
 * Connect to the two devices
-* Learn bgp, interface, platform, ospf and the device configuration and save it to file.
-* And compare the new snapshot with the original snapshot!
+* Learn BGP, interface, platform, OSPF and the device configuration, and save it to files
+* And compare the new snapshot with the original one!
 
 Let's start the script.
 
@@ -295,8 +295,8 @@ And again, open the `run/log.html` with a web browser to view the log.
 
 Similar to typical Linux diff:
 
-* `-` means this key is now missing or has been modified and this was the old value.
-* `+` means this key has been added or been modified and this is the current value.
+* `-` means this key is now missing or has been modified and this was the old value
+* `+` means this key has been added or been modified and this is the current value
 
 You should see the following in your log:
 
@@ -316,18 +316,18 @@ info:
 
 ```
 
-and this should allow us to arrive at the same conclusion easily, as with using
+And this should allow us to arrive at the same conclusion easily, as with using
 Genie CLI.
 
 ----------------------------------------------------------------------------------------
 
 ### Step 7 - Bonus
 
-Genie CLI and Genie RobotFramework library have tons of extra functionality; let's try a
+Genie CLI and Genie RobotFramework library have tons of extra functionality, let's try a
 few of them.
 
 
-#### Parse cli command with Genie CLI
+#### Parse CLI command with Genie CLI
 
 Devices output can be parsed into structure data with Genie CLI.
 
@@ -338,18 +338,16 @@ genie parse "show version" --testbed-file testbed.yaml --device nx-osv-1 --outpu
 genie parse "show version" "show ip ospf interface vrf all" --testbed-file testbed.yaml --device nx-osv-1 --output initial_output
 ```
 
-Visit our website to see all [available
-parser](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/genie_libs/#/parsers).
+Visit our website to see all [available parsers](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/genie_libs/#/parsers).
 
-
-Then you can take snapshot of the same command at different time and compare them
+Then you can take a snapshot of the same command at a different time and compare them.
 
 ```bash
 
 genie parse "show version" "show ip ospf interface vrf all" --testbed-file testbed.yaml --device nx-osv-1 --output current_output
 ```
 
-And to compare them
+And to compare them:
 
 ```bash
 
@@ -364,52 +362,52 @@ documentation](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cl
 
 So far we've created a very useful comparison script with our Robot keywords.
 
-[Genie robot library]((https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/robot/index.html)
+[Genie robot library](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/robot/index.html)
 contains many keywords that you can use for writing your script.
 
 The script : `bonus_robot/verify_count.robot` does the following:
 
 * Load Genie Library
 * Connect to the two devices
-* Verify the number of Bgp neighbors
-* Verify the number of Bgp routes
+* Verify the number of BGP neighbors
+* Verify the number of BGP routes
 * Verify the number of OSPF neighbor
 * Verify the number of up Interfaces
 
 ```bash
 
 # this environment variable is needed as we are using our Mocked Device.
-# When Genie cli is used with real devices, these can be omitted.
+# When Genie CLI is used with real devices, these can be omitted.
 export unicon_replay=~/workspace/devnet-2595/workshop/mocked_devices/bonus_recording
 
 cd bonus_robot
 robot --outputdir run verify_count.robot
 ```
 
-This style of testing is great to run periodically to make sure the state of
-your device.
+This style of testing is great to run periodically and make sure of the state of
+your devices.
 
 
 ### Conclusion
 
-This conclude this workshop; we hope this session was inspirational and open
-possibilities for your own Automation and NetDevOp.
+This concludes the workshop, we hope this session was inspirational and opened
+possibilities for your own Automation and NetDevOps.
 
 To iterate a few points about pyATS and Genie:
 
-* pyATS and Genie is developed and used as the de-facto testing library and solution in Cisco.
-* Genie is **THE** Python library to use to automate your network!
-* It is **free** to use and all the libraries are [open source](https://github.com/CiscoTestAutomation).
-* The Cisco internal and customer external version of pyATS/Genie is exactly the same.
+* pyATS and Genie is developed and used as the de-facto testing library and solution in Cisco
+* Genie is **THE** Python library to use and automate your network!
+* It is **free** to use and all the libraries are [open source](https://github.com/CiscoTestAutomation)
+* The Cisco internal and customer external version of pyATS/Genie is exactly the same
 * New libraries and innovation are being released as we speak!
 * Genie libraries can be used in many ways:
-    * With the [Genie cli](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli.html)
+    * With the [Genie CLI](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli.html)
     * RobotFramework [Genie library](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/robot/index.html)
     * As a pure [Python library](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/)
 
 
-This workshop is an excellent starting point to automate your network; Genie
+This workshop is an excellent starting point to automate your network. Genie
 CLI is easy to use and very powerful, and requires no previous knowledge.
 RobotFramework is a great step towards automation, but without focusing too
-much on the language syntax. And for more advanced user, you can dig straight
+much on the language syntax. And for more advanced users, you can dig straight
 into the documentation and the code and get started!
