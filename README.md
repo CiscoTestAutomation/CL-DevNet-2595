@@ -1,3 +1,5 @@
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/CiscoTestAutomation/CL-DevNet-2595)
+
 # Cisco Live Europe 2019: DevNet-2595 Workshop Material
 
 This repository contains the files required for the participants of [Cisco Live Europe 2019](https://ciscolive.cisco.com/emea/)
