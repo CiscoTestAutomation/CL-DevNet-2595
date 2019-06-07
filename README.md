@@ -1,8 +1,8 @@
 [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/CiscoTestAutomation/CL-DevNet-2595)
 
-# Cisco Live Europe 2019: DevNet-2595 Workshop Material
+# Cisco Live US 2019: DevNet-2595 Workshop Material
 
-This repository contains the files required for the participants of [Cisco Live Europe 2019](https://ciscolive.cisco.com/emea/)
+This repository contains the files required for the participants of [Cisco Live US 2019](https://www.ciscolive.com/us.html?zid=cl-global)
 workshop:
 
 > DevNet-2595: Stateful Network Validation using pyATS+Genie and Robot Framework.
@@ -11,7 +11,7 @@ This workshop can be completed at home; as all devices are included in this work
 
 ## General Information
 
-- Cisco Live Europe: https://ciscolive.cisco.com/emea/
+- Cisco Live US: https://www.ciscolive.com/us.html?zid=cl-global
 - pyATS/Genie Portal: https://developer.cisco.com/pyats/
 - Genie Documentation: https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/index.html
   - Genie CLI: https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli/index.html
@@ -26,7 +26,7 @@ This workshop can be completed at home; as all devices are included in this work
 ## Requirements
 
 - Mac OSX, Linux or Windows 10 [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-- Python 3.4, 3.5 or 3.6
+- Python 3.5, 3.6 or 3.7
 - Network connectivity (for downloading PyPI packages)
 - Working knowledge of Python is a plus, but not required.
 

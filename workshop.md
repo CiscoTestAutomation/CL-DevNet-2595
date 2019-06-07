@@ -63,7 +63,7 @@ mock_device_cli --os iosxe --mock_data_dir mocked_devices/initial_yamls/csr --st
 
 **Oh no!**
 
-![oh No!](ohNo.png)
+![oh No!](ohNo.jpg)
 
 All of sudden, the network is not operating as expected! Without any
 automation, can you figure out what happened without going to the previous
@@ -138,7 +138,7 @@ Thats it! We are now ready for our disaster to happen!
 
 **Oh No**
 
-![oh No!](ohNo.png)
+![oh No!](ohNo.jpg)
 
 When the same disaster occurs, **Genie to the rescue!**
 
@@ -259,7 +259,7 @@ are now ready for a disaster to happen!
 
 **Oh No**
 
-![oh No!](ohNo.png)
+![oh No!](ohNo.jpg)
 
 **Disaster!**
 
