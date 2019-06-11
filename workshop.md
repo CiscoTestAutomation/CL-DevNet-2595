@@ -29,7 +29,7 @@ issues, you must react quickly and fix it! (Sounds familiar?)
 ##### Getting Ready
 
 ```bash
-cd ~/workspace/devnet-2595
+cd ~/workspace/devwks-2595
 source bin/activate
 cd workshop
 ```

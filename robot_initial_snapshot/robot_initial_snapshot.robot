@@ -24,4 +24,4 @@ Connect
     connect to device "csr1000v-1"
 
 Profile the devices
-    Profile the system for "bgp;config;interface;platform;ospf;arp;routing;vrf;vlan" on devices "nx-osv-1;csr1000v-1" as "./good_snapshot"
+    Profile the system for "bgp;config;interface;platform;ospf;arp;vrf;vlan" on devices "nx-osv-1;csr1000v-1" as "./good_snapshot"

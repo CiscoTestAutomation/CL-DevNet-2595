@@ -24,7 +24,7 @@ Connect
     connect to device "csr1000v-1"
 
 Profile the devices
-    Profile the system for "bgp;config;interface;platform;ospf;arp;routing;vrf;vlan" on devices "nx-osv-1;csr1000v-1" as "./new_snapshot"
+    Profile the system for "bgp;config;interface;platform;ospf;arp;vrf;vlan" on devices "nx-osv-1;csr1000v-1" as "./new_snapshot"
 
 Compare snapshots
     Compare profile "../robot_initial_snapshot/good_snapshot" with "./new_snapshot" on devices "nx-osv-1;csr1000v-1"
