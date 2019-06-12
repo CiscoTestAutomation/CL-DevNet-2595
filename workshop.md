@@ -100,7 +100,7 @@ The first step is to learn the good state of the devices.
 
 # these two environment variables are needed as we are using our Mocked Device.
 # When Genie cli is used with real devices, these can be omitted.
-export unicon_replay=~/workspace/devnet-2595/workshop/mocked_devices/initial_recording
+export unicon_replay=~/workspace/devwks-2595/workshop/mocked_devices/initial_recording
 export unicon_speed=10
 
 # run genie CLI
@@ -147,7 +147,7 @@ When the same disaster occurs, **Genie to the rescue!**
 
 # this environment variable is needed as we are using our Mocked Device.
 # When Genie cli is used with real devices, these can be omitted.
-export unicon_replay=~/workspace/devnet-2595/workshop/mocked_devices/disaster_recording
+export unicon_replay=~/workspace/devwks-2595/workshop/mocked_devices/disaster_recording
 
 # call genie CLI again
 genie learn ospf interface bgp platform --testbed-file testbed.yaml --output disaster
@@ -241,7 +241,7 @@ Let's run the script:
 
 # this environment variable is needed as we are using our Mocked Device.
 # When Genie cli is used with real devices, these can be omitted.
-export unicon_replay=~/workspace/devnet-2595/workshop/mocked_devices/initial_recording
+export unicon_replay=~/workspace/devwks-2595/workshop/mocked_devices/initial_recording
 
 # run robot script
 cd robot_initial_snapshot
@@ -284,7 +284,7 @@ Let's start the script.
 
 # this environment variable is needed as we are using our Mocked Device.
 # When Genie cli is used with real devices, these can be omitted.
-export unicon_replay=~/workspace/devnet-2595/workshop/mocked_devices/disaster_recording
+export unicon_replay=~/workspace/devwks-2595/workshop/mocked_devices/disaster_recording
 
 # run robot script
 cd ../robot_compare_snapshot
@@ -378,7 +378,7 @@ The script : `bonus_robot/verify_count.robot` does the following:
 
 # this environment variable is needed as we are using our Mocked Device.
 # When Genie CLI is used with real devices, these can be omitted.
-export unicon_replay=~/workspace/devnet-2595/workshop/mocked_devices/bonus_recording
+export unicon_replay=~/workspace/devwks-2595/workshop/mocked_devices/bonus_recording
 
 cd bonus_robot
 robot --outputdir run verify_count.robot
