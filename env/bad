@@ -1,0 +1,2 @@
+export unicon_replay=`pwd`/mocked_devices/disaster_recording
+export unicon_speed=10
