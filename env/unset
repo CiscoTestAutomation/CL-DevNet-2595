@@ -1,2 +1,2 @@
-unset unicon_replay
-unset unicon_speed
+unset UNICON_REPLAY
+unset UNICON_REPLAY_SPEED

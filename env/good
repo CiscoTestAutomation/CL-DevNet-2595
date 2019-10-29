@@ -1,2 +1,2 @@
-export unicon_replay=`pwd`/mocked_devices/initial_recording
-export unicon_speed=10
+export UNICON_REPLAY=`pwd`/mocked_devices/initial_recording
+export UNICON_REPLAY_SPEED=10
