@@ -29,4 +29,4 @@ pip install --upgrade pip setuptools
 pip install pyats[full]
 
 # clone this repo
-git clone https://github.com/CiscoTestAutomation/CL-DEVWKS-2808 workshop
+git clone https://github.com/CiscoTestAutomation/CL-DevNet-2595 workshop

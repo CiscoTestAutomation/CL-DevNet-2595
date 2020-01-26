@@ -32,7 +32,7 @@ pip install pyats[full]
 pip install tabulate cryptography
 
 # clone workshop
-git clone https://github.com/CiscoTestAutomation/CL-DEVWKS-2808 workshop
+git clone https://github.com/CiscoTestAutomation/CL-DevNet-2595 workshop
 
 # last minute patches
 GENIE_ROBOT=$(python -c "from genie.libs import robot; import os; print(os.path.dirname(robot.__file__))")
