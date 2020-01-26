@@ -51,7 +51,7 @@ You can send a few show commands to better understand the topology and configura
 - `show interface`
 - `show ip ospf vrf all`
 
-> NOTE: use `Ctrl+D` to disconnect from the device.
+> NOTE: use `Ctrl+C` to disconnect from the device.
 
 Second, use the following command to connect to your IOSXE/CSR device.
 
@@ -77,7 +77,7 @@ mock_device_cli --os nxos --mock_data_dir mocked_devices/disaster_yamls/nxos --s
 mock_device_cli --os iosxe --mock_data_dir mocked_devices/disaster_yamls/csr --state execute
 ```
 
-> Remember: use `Ctrl+D` to disconnect from the device.
+> Remember: use `Ctrl+C` to disconnect from the device.
 
 This is not an easy task!
 
@@ -85,9 +85,9 @@ Let's see how we handle this in 2019 with Genie!
 
 -------------------------------------------------------------------------------------------------------------
 
-## Let's replay our disaster scenario, but this time using Genie CLI
+## Let's replay our disaster scenario, but this time using pyATS CLI
 
-### Step 3 - Using Genie CLI - Collect information
+### Step 3 - Using pyATS ClI - Collect information
 
 [Genie offers command line tools](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli.html)
 that allows the user to manage their network whilst leveraging the power of
@@ -99,17 +99,17 @@ The first step is to learn the good state of the devices.
 ```bash
 
 # these two environment variables are needed as we are using our Mocked Device.
-# When Genie cli is used with real devices, these can be omitted.
-export unicon_replay=~/workspace/devwks-2595/workshop/mocked_devices/initial_recording
-export unicon_speed=10
+# When pyATS CLI is used with real devices, these can be omitted.
+export UNICON_REPLAY=~/workspace/devwks-2595/workshop/mocked_devices/initial_recording
+export UNICON_SPEED=10
 
-# run genie CLI
-genie learn ospf interface bgp platform --testbed-file testbed.yaml --output learnt
+# run pyATS CLI
+pyats learn ospf interface bgp platform --testbed-file testbed.yaml --output learnt
 ```
 
 Take a moment to look at the output.
 
-Your call to this Genie CLI stores the device output and the parsed datastructure
+Your call to this pyATS CLI stores the device output and the parsed datastructure
 into a folder called `learnt`.
 
 *Consider this as the sane state snapshot for the testbed you are in charge of.*
@@ -134,7 +134,7 @@ structured data open many new possibilities which we will see.
 
 Thats it! We are now ready for our disaster to happen!
 
-### Step 4 - Using Genie CLI - ...all is good
+### Step 4 - Using pyATS CLI - ...all is good
 
 **Oh No**
 
@@ -146,11 +146,11 @@ When the same disaster occurs, **Genie to the rescue!**
 ```bash
 
 # this environment variable is needed as we are using our Mocked Device.
-# When Genie cli is used with real devices, these can be omitted.
-export unicon_replay=~/workspace/devwks-2595/workshop/mocked_devices/disaster_recording
+# When pyATS CLI is used with real devices, these can be omitted.
+export UNICON_REPLAY=~/workspace/devwks-2595/workshop/mocked_devices/disaster_recording
 
-# call genie CLI again
-genie learn ospf interface bgp platform --testbed-file testbed.yaml --output disaster
+# call pyATS CLI again
+pyats learn ospf interface bgp platform --testbed-file testbed.yaml --output disaster
 ```
 
 You now have a new snapshot of how your devices are behaving in its
@@ -159,7 +159,7 @@ disastrous state, under the `disaster` folder.
 Now, perform a diff of the states before and after disaster occurance.
 
 ```bash
-genie diff learnt disaster
+pyats diff learnt disaster
 ```
 
 You can clearly see that the OSPF and interface operational state has changed.
@@ -199,11 +199,11 @@ Once the problem is pin-pointed, tackling the problem is now much easier.
 Investigation will start on why this port is now shutdown and bring it
 back up.
 
-[Genie CLI]((https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli.html))
+[pyATS CLI]((https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli.html))
 is ready for you to use on your own network. Just repeat the same steps on your
 network, whenever needed.
 
-> In the last part of this workshop we will try a few more Genie CLI commands.
+> In the last part of this workshop we will try a few more pyATS CLI commands.
 
 -----------------------------------------------------------------------------------------------
 
@@ -240,8 +240,8 @@ Let's run the script:
 ```bash
 
 # this environment variable is needed as we are using our Mocked Device.
-# When Genie cli is used with real devices, these can be omitted.
-export unicon_replay=~/workspace/devwks-2595/workshop/mocked_devices/initial_recording
+# When pyATS CLI is used with real devices, these can be omitted.
+export UNICON_REPLAY=~/workspace/devwks-2595/workshop/mocked_devices/initial_recording
 
 # run robot script
 cd robot_initial_snapshot
@@ -283,8 +283,8 @@ Let's start the script.
 ```bash
 
 # this environment variable is needed as we are using our Mocked Device.
-# When Genie cli is used with real devices, these can be omitted.
-export unicon_replay=~/workspace/devwks-2595/workshop/mocked_devices/disaster_recording
+# When pyATS CLI is used with real devices, these can be omitted.
+export UNICON_REPLAY=~/workspace/devwks-2595/workshop/mocked_devices/disaster_recording
 
 # run robot script
 cd ../robot_compare_snapshot
@@ -317,19 +317,19 @@ info:
 ```
 
 And this should allow us to arrive at the same conclusion easily, as with using
-Genie CLI.
+pyATS CLI.
 
 ----------------------------------------------------------------------------------------
 
 ### Step 7 - Bonus
 
-Genie CLI and Genie RobotFramework library have tons of extra functionality, let's try a
+pyATS CLI and Genie RobotFramework library have tons of extra functionality, let's try a
 few of them.
 
 
-#### Parse CLI command with Genie CLI
+#### Parse CLI command with pyATS CLI
 
-Devices output can be parsed into structure data with Genie CLI.
+Devices output can be parsed into structure data with pyATS CLI.
 
 ```bash
 
@@ -354,7 +354,7 @@ And to compare them:
 genie diff initial_output current_output --output parser_diff
 ```
 
-All others possibilities and arguments are discussed on our [Genie CLI
+All others possibilities and arguments are discussed on our [pyATS CLI
 documentation](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli.html)!
 
 
@@ -377,8 +377,8 @@ The script : `bonus_robot/verify_count.robot` does the following:
 ```bash
 
 # this environment variable is needed as we are using our Mocked Device.
-# When Genie CLI is used with real devices, these can be omitted.
-export unicon_replay=~/workspace/devwks-2595/workshop/mocked_devices/bonus_recording
+# When pyATS CLI is used with real devices, these can be omitted.
+export UNICON_REPLAY=~/workspace/devwks-2595/workshop/mocked_devices/bonus_recording
 
 cd bonus_robot
 robot --outputdir run verify_count.robot
@@ -401,7 +401,7 @@ To iterate a few points about pyATS and Genie:
 * The Cisco internal and customer external version of pyATS/Genie is exactly the same
 * New libraries and innovation are being released as we speak!
 * Genie libraries can be used in many ways:
-    * With the [Genie CLI](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli.html)
+    * With the [pyATS CLI](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli.html)
     * RobotFramework [Genie library](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/robot/index.html)
     * As a pure [Python library](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/)
 

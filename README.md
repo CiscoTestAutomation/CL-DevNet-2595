@@ -1,26 +1,27 @@
 [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/CiscoTestAutomation/CL-DevNet-2595)
 
-# Cisco Live US 2019: DevNet-2595 Workshop Material
+# Cisco Live CLEUR 2020: DevNet-2595 Workshop Material
 
-This repository contains the files required for the participants of [Cisco Live US 2019](https://www.ciscolive.com/us.html?zid=cl-global)
-workshop:
+This repository contains the files required for the participants of [Cisco Live CLEUR 2020](https://www.ciscolive.com/)
+workshop **DevNet-2595: Stateful Network Validation using pyATS+Genie and Robot Framework**
 
-> DevNet-2595: Stateful Network Validation using pyATS+Genie and Robot Framework.
+> Note: This workshop can be completed at home.
+> 
+> All files required are included in this repository. You do not need physical
+> devices - mock devices are provided.
 
-This workshop can be completed at home; as all devices are included in this workshop.
 
 ## General Information
 
-- Cisco Live US: https://www.ciscolive.com/us.html?zid=cl-global
-- pyATS/Genie Portal: https://developer.cisco.com/pyats/
-- Genie Documentation: https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/index.html
+- Cisco Live! Webpage: https://www.ciscolive.com/us.html?zid=cl-global
+- pyATS/Genie Portal: https://cs.co/pyats
+- Documentation Central: https://developer.cisco.com/docs/pyats/
+  - Getting Started: https://developer.cisco.com/docs/pyats-getting-started/
+  - API Browser: https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/
   - Genie CLI: https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli/index.html
-  - RobotFramework Keywords: https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/robot.html
-  - Triggers, Verifications, Models: https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/genie_libs/index.html
-- pyATS Documentation: https://developer.cisco.com/docs/pyats/
-  - RobotFramework Keywords: https://pubhub.devnetcloud.com/media/pyats/docs/robot.html
-- Community: https://communities.cisco.com/community/developer/pyats
+  - RobotFramework Keywords: https://pubhub.devnetcloud.com/media/genie-docs/docs/userguide/robot/index.html
 - Support Email: pyats-support-ext@cisco.com
+
 
 
 ## Requirements
@@ -60,13 +61,17 @@ pip install --upgrade pip setuptools
 
 #### Step 2. Install Genie, pyATS, and Robot Framework
 
-Installing `genie` and `genie.libs.robot` will automatically install all required
-dependencies, including `pyats` and `pyats.robot` Robot Framework keyword support.
-
 ```bash
-# install genie and genie robot library
-pip install genie genie.libs.robot
+# install our packages
+pip install genie[full]
 ```
+
+> Note:
+>
+> The install target `pyATS[full]` performs a *full* installation, that is, 
+> including the core framework pyATS, the standard libraries Genie, and 
+> additional components such as RobotFramework support etc.
+
 
 #### Step 3. Clone this repository
 

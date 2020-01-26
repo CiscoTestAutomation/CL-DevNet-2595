@@ -3,13 +3,12 @@
 
 *** Settings ***
 # Importing test libraries, resource files and variable files.
-Library        ats.robot.pyATSRobot
 Library        genie.libs.robot.GenieRobot
+Library        ats.robot.pyATSRobot
 
 
 *** Variables ***
 # Define the pyATS testbed file to use for this run
-#${testbed}     /root/katacoda-scenarios/compare/tb.yaml 
 ${testbed}     ../testbed.yaml 
 
 *** Test Cases ***
