@@ -4,7 +4,7 @@
 #                                     Note
 #
 #   these instructions are used during CLUS for setting up the Macbooks.
-#   wget -O - https://raw.githubusercontent.com/CiscoTestAutomation/CL-DevNet-2595/master/lab_setup.sh | bash
+#   wget -O - https://raw.githubusercontent.com/CiscoTestAutomation/CL-DevNet-2595/master/mac_setup.sh | bash
 # ------------------------------------------------------------------------------
 
 # install pyenv and python
@@ -26,7 +26,7 @@ source bin/activate
 pip install --upgrade pip setuptools
 
 # install genie and genie robot library
-pip install --pre genie genie.libs.robot tabulate
+pip install pyats[full]
 
 # clone this repo
-git clone https://github.com/CiscoTestAutomation/CL-DevNet-2595.git workshop
+git clone https://github.com/CiscoTestAutomation/CL-DEVWKS-2808 workshop
