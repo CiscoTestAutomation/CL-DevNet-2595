@@ -34,3 +34,6 @@ pip install tabulate cryptography
 # clone workshop
 git clone https://github.com/CiscoTestAutomation/CL-DEVWKS-2808 workshop
 
+# last minute patches
+GENIE_ROBOT=$(python -c "from genie.libs import robot; import os; print(os.path.dirname(robot.__file__))")
+cp workshop/patches/GenieRobot.py $GENIE_ROBOT/

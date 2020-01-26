@@ -1,16 +1,16 @@
 [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/CiscoTestAutomation/CL-DevNet-2595)
 
-# Cisco Live CLEUR 2020: DevNet-2595 Workshop Material
+# Cisco Live! DEVWKS-2595: Stateful Network Validation using pyATS/Genie
 
-This repository contains the files required for the participants of [Cisco Live CLEUR 2020](https://www.ciscolive.com/)
-workshop **DevNet-2595: Stateful Network Validation using pyATS+Genie and Robot Framework**
+This repository contains the files required for the participants of 
+[Cisco Live!](https://www.ciscolive.com/us.html?zid=cl-global) workshop
+**DEVWKS-2595: Stateful Network Validation using pyATS/Genie.**
 
 > Note: This workshop can be completed at home.
 > 
 > All files required are included in this repository. You do not need physical
 > devices - mock devices are provided.
-
-
+> 
 ## General Information
 
 - Cisco Live! Webpage: https://www.ciscolive.com/us.html?zid=cl-global
@@ -18,11 +18,12 @@ workshop **DevNet-2595: Stateful Network Validation using pyATS+Genie and Robot 
 - Documentation Central: https://developer.cisco.com/docs/pyats/
   - Getting Started: https://developer.cisco.com/docs/pyats-getting-started/
   - API Browser: https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/
-  - Genie CLI: https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli/index.html
-  - RobotFramework Keywords: https://pubhub.devnetcloud.com/media/genie-docs/docs/userguide/robot/index.html
+- RobotFramework Keywords: 
+  - pyATS Core Framework: https://pubhub.devnetcloud.com/media/pyats/docs/robot/native.html
+  - Genie Framework: https://pubhub.devnetcloud.com/media/genie-docs/docs/userguide/robot.html
+  - Genie APIs: https://pubhub.devnetcloud.com/media/genie-docs/docs/userguide/robot.html
+  - Unicon APIs: https://pubhub.devnetcloud.com/media/unicon/docs/robot.html
 - Support Email: pyats-support-ext@cisco.com
-
-
 
 ## Requirements
 
@@ -31,39 +32,38 @@ workshop **DevNet-2595: Stateful Network Validation using pyATS+Genie and Robot 
 - Network connectivity (for downloading PyPI packages)
 - Working knowledge of Python is a plus, but not required.
 
-All Cisco devices are provided! We are providing mocked devices which are
-sufficient for this workshop.
-
 ## Preparation Instructions
 
-> These preparations will have been already done on the laptop you use in
-> Cisco Live. If you are doing this on your own times, you'll need these steps.
+> **Note:**
+> 
+> For those attending Cisco Live! Workshop in person, these instructions
+> have already been performed on the laptop you are using in front of you.
 
-#### Step 1. Create a Python virtual environment
+**Step 1: Create a Python Virtual Environment**
 
-In a new shell window:
+In a new terminal window:
 
 ```bash
-# create a development directory
+# go to your workspace directory
+# (or where you typical work from)
 cd ~/workspace
-mkdir devnet-2595
-cd devnet-2595
 
 # create python virtual environment
-python3 -m venv .
+python3 -m venv devwks-2595
 
 # activate virtual environment
+cd devwks-2595
 source bin/activate
 
 # update your pip/setuptools
 pip install --upgrade pip setuptools
 ```
 
-#### Step 2. Install Genie, pyATS, and Robot Framework
+**Step 2: Install pyATS & Genie**
 
 ```bash
-# install our packages
-pip install genie[full]
+# install our packages 
+pip install pyats[full]
 ```
 
 > Note:
@@ -72,12 +72,14 @@ pip install genie[full]
 > including the core framework pyATS, the standard libraries Genie, and 
 > additional components such as RobotFramework support etc.
 
-
-#### Step 3. Clone this repository
+**Step 3: Clone This Repository**
 
 ```bash
 # clone this repo
 git clone https://github.com/CiscoTestAutomation/CL-DevNet-2595.git workshop
+
+# cd to the directory
+cd workshop
 ```
 
 and now you should be ready to get going!

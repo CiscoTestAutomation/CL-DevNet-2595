@@ -89,7 +89,7 @@ Let's see how we handle this in 2019 with Genie!
 
 ### Step 3 - Using pyATS ClI - Collect information
 
-[Genie offers command line tools](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli.html)
+[Genie offers command line tools](https://pubhub.devnetcloud.com/media/genie-docs/docs/cli/index.html)
 that allows the user to manage their network whilst leveraging the power of
 Genie Python libraries, without any prerequisite understanding in Python or
 automation.
@@ -100,7 +100,7 @@ The first step is to learn the good state of the devices.
 
 # these two environment variables are needed as we are using our Mocked Device.
 # When pyATS CLI is used with real devices, these can be omitted.
-export UNICON_REPLAY=~/workspace/devwks-2595/workshop/mocked_devices/initial_recording
+export UNICON_REPLAY=`pwd`/mocked_devices/initial_recording
 export UNICON_SPEED=10
 
 # run pyATS CLI
@@ -114,7 +114,7 @@ into a folder called `learnt`.
 
 *Consider this as the sane state snapshot for the testbed you are in charge of.*
 
-Internally, Genie uses its [Models](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/genie_libs/#/models)
+Internally, Genie uses its [Models](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/models)
 to decide which commands to issue, and what to store. Genie feature models
 are agnostic across OS, platforms and management protocols (eg, CLI/NETCONF).
 
@@ -147,7 +147,7 @@ When the same disaster occurs, **Genie to the rescue!**
 
 # this environment variable is needed as we are using our Mocked Device.
 # When pyATS CLI is used with real devices, these can be omitted.
-export UNICON_REPLAY=~/workspace/devwks-2595/workshop/mocked_devices/disaster_recording
+export UNICON_REPLAY=`pwd`/mocked_devices/disaster_recording
 
 # call pyATS CLI again
 pyats learn ospf interface bgp platform --testbed-file testbed.yaml --output disaster
@@ -215,7 +215,7 @@ network, whenever needed.
 between no automation and full python. It writes like English text, is keywords
 driven and can be extended with external libraries.
 
-[Genie RobotFramework Libs](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/robot/index.html)
+[Genie RobotFramework Libs](https://pubhub.devnetcloud.com/media/genie-docs/docs/userguide/robot/index.html)
 exists to allow you to control your network in RobotFramework using the full
 power of Genie models.
 
@@ -241,7 +241,7 @@ Let's run the script:
 
 # this environment variable is needed as we are using our Mocked Device.
 # When pyATS CLI is used with real devices, these can be omitted.
-export UNICON_REPLAY=~/workspace/devwks-2595/workshop/mocked_devices/initial_recording
+export UNICON_REPLAY=`pwd`/mocked_devices/initial_recording
 
 # run robot script
 cd robot_initial_snapshot
@@ -284,7 +284,7 @@ Let's start the script.
 
 # this environment variable is needed as we are using our Mocked Device.
 # When pyATS CLI is used with real devices, these can be omitted.
-export UNICON_REPLAY=~/workspace/devwks-2595/workshop/mocked_devices/disaster_recording
+export UNICON_REPLAY=`pwd`/mocked_devices/disaster_recording
 
 # run robot script
 cd ../robot_compare_snapshot
@@ -334,24 +334,24 @@ Devices output can be parsed into structure data with pyATS CLI.
 ```bash
 
 cd ..
-genie parse "show version" --testbed-file testbed.yaml --device nx-osv-1 --output initial_output
-genie parse "show version" "show ip ospf interface vrf all" --testbed-file testbed.yaml --device nx-osv-1 --output initial_output
+pyats parse "show version" --testbed-file testbed.yaml --device nx-osv-1 --output initial_output
+pyats parse "show version" "show ip ospf interface vrf all" --testbed-file testbed.yaml --device nx-osv-1 --output initial_output
 ```
 
-Visit our website to see all [available parsers](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/genie_libs/#/parsers).
+Visit our website to see all [available parsers](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers).
 
 Then you can take a snapshot of the same command at a different time and compare them.
 
 ```bash
 
-genie parse "show version" "show ip ospf interface vrf all" --testbed-file testbed.yaml --device nx-osv-1 --output current_output
+pyats parse "show version" "show ip ospf interface vrf all" --testbed-file testbed.yaml --device nx-osv-1 --output current_output
 ```
 
 And to compare them:
 
 ```bash
 
-genie diff initial_output current_output --output parser_diff
+pyats diff initial_output current_output --output parser_diff
 ```
 
 All others possibilities and arguments are discussed on our [pyATS CLI
@@ -362,7 +362,7 @@ documentation](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cl
 
 So far we've created a very useful comparison script with our Robot keywords.
 
-[Genie robot library](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/robot/index.html)
+[Genie robot library](https://pubhub.devnetcloud.com/media/genie-docs/docs/userguide/robot.html)
 contains many keywords that you can use for writing your script.
 
 The script : `bonus_robot/verify_count.robot` does the following:
@@ -378,7 +378,7 @@ The script : `bonus_robot/verify_count.robot` does the following:
 
 # this environment variable is needed as we are using our Mocked Device.
 # When pyATS CLI is used with real devices, these can be omitted.
-export UNICON_REPLAY=~/workspace/devwks-2595/workshop/mocked_devices/bonus_recording
+export UNICON_REPLAY=`pwd`/mocked_devices/bonus_recording
 
 cd bonus_robot
 robot --outputdir run verify_count.robot
@@ -401,9 +401,9 @@ To iterate a few points about pyATS and Genie:
 * The Cisco internal and customer external version of pyATS/Genie is exactly the same
 * New libraries and innovation are being released as we speak!
 * Genie libraries can be used in many ways:
-    * With the [pyATS CLI](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/cli.html)
-    * RobotFramework [Genie library](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/robot/index.html)
-    * As a pure [Python library](https://pubhub.devnetcloud.com/media/pyats-packages/docs/genie/)
+    * With the [Genie CLI](https://pubhub.devnetcloud.com/media/genie-docs/docs/cli/index.html)
+    * RobotFramework [Genie library](https://pubhub.devnetcloud.com/media/genie-docs/docs/userguide/robot.html)
+    * As a pure [Python library](https://pubhub.devnetcloud.com/media/genie-docs/docs/userguide/index.html)
 
 
 This workshop is an excellent starting point to automate your network. Genie
