@@ -97,14 +97,8 @@ automation.
 The first step is to learn the good state of the devices.
 
 ```bash
-
-# these two environment variables are needed as we are using our Mocked Device.
-# When pyATS CLI is used with real devices, these can be omitted.
-export UNICON_REPLAY=`pwd`/mocked_devices/initial_recording
-export UNICON_SPEED=100
-
 # run pyATS CLI
-pyats learn ospf interface bgp platform --testbed-file testbed.yaml --output learnt
+pyats learn ospf interface bgp platform --testbed-file working-tb.yaml --output learnt
 ```
 
 Take a moment to look at the output.
@@ -144,13 +138,8 @@ When the same disaster occurs, **Genie to the rescue!**
 
 
 ```bash
-
-# this environment variable is needed as we are using our Mocked Device.
-# When pyATS CLI is used with real devices, these can be omitted.
-export UNICON_REPLAY=`pwd`/mocked_devices/disaster_recording
-
 # call pyATS CLI again
-pyats learn ospf interface bgp platform --testbed-file testbed.yaml --output disaster
+pyats learn ospf interface bgp platform --testbed-file disaster-tb.yaml --output disaster
 ```
 
 You now have a new snapshot of how your devices are behaving in its
@@ -226,7 +215,7 @@ Our Workshop Robot script tackles the same challenge as earlier:
 
 With an editor, open the script below and examine its content:
 
-- `robot_initial_snapshot/robot_initial_snapshot.robot`
+- `robot_initial_snapshot.robot`
 
 The Robot language is keyword based, which makes reading this script quite easy.
 Without much effort, you should see that this script does the following:
@@ -238,20 +227,14 @@ Without much effort, you should see that this script does the following:
 Let's run the script:
 
 ```bash
-
-# this environment variable is needed as we are using our Mocked Device.
-# When pyATS CLI is used with real devices, these can be omitted.
-export UNICON_REPLAY=`pwd`/mocked_devices/initial_recording
-
 # run robot script
-cd robot_initial_snapshot
-robot --outputdir run robot_initial_snapshot.robot
+robot --outputdir robot_initial robot_initial_snapshot.robot
 ```
 
-RobotFramework generates its own log files. You can open the `run/log.html` with a
+RobotFramework generates its own log files. You can open the `robot_initial/log.html` with a
 web browser to view it.
 
-Our good snapshot was saved as file `robot_initial_snapshot/good_snapshot`; we
+Our good snapshot was saved as file `./good_snapshot`; we
 are now ready for a disaster to happen!
 
 
@@ -269,7 +252,7 @@ previous good snapshot.
 
 With an editor open the script below, and examine its content:
 
-`robot_compare_snapshot/compare_snapshot.robot`
+`robot_compare_snapshot.robot`
 
 This is the 2nd RobotFramework based script which, upon running, will:
 
@@ -281,17 +264,11 @@ This is the 2nd RobotFramework based script which, upon running, will:
 Let's start the script.
 
 ```bash
-
-# this environment variable is needed as we are using our Mocked Device.
-# When pyATS CLI is used with real devices, these can be omitted.
-export UNICON_REPLAY=`pwd`/mocked_devices/disaster_recording
-
 # run robot script
-cd ../robot_compare_snapshot
-robot --outputdir run compare_snapshot.robot
+robot --outputdir robot_compare robot_compare_snapshot.robot
 ```
 
-And again, open the `run/log.html` with a web browser to view the log.
+And again, open the `robot_compare/log.html` with a web browser to view the log.
 
 Similar to typical Linux diff:
 
@@ -302,7 +279,7 @@ You should see the following in your log:
 
 ```text
 
-Comparison between ../robot_initial_snapshot/good_snapshot and ./new_snapshot is different for feature 'interface' for device:
+Comparison between ./good_snapshot and ./new_snapshot is different for feature 'interface' for device:
 
 'nx-osv-1'
 info:
@@ -334,9 +311,8 @@ Devices output can be parsed into structure data with pyATS CLI.
 ```bash
 
 cd ..
-export UNICON_REPLAY=`pwd`/mocked_devices/initial_recording
-pyats parse "show version" --testbed-file testbed.yaml --device nx-osv-1 --output initial_output
-pyats parse "show version" "show ip ospf interface vrf all" --testbed-file testbed.yaml --device nx-osv-1 --output initial_output
+pyats parse "show version" --testbed-file working-tb.yaml --device nx-osv-1 --output initial_output
+pyats parse "show version" "show ip ospf interface vrf all" --testbed-file working-tb.yaml --device nx-osv-1 --output initial_output
 ```
 
 Visit our website to see all [available parsers](https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers).
@@ -345,7 +321,7 @@ Then you can take a snapshot of the same command at a different time and compare
 
 ```bash
 
-pyats parse "show version" "show ip ospf interface vrf all" --testbed-file testbed.yaml --device nx-osv-1 --output current_output
+pyats parse "show version" "show ip ospf interface vrf all" --testbed-file working-tb.yaml --device nx-osv-1 --output current_output
 ```
 
 And to compare them:
@@ -366,7 +342,7 @@ So far we've created a very useful comparison script with our Robot keywords.
 [Genie robot library](https://pubhub.devnetcloud.com/media/genie-docs/docs/userguide/robot.html)
 contains many keywords that you can use for writing your script.
 
-The script : `bonus_robot/verify_count.robot` does the following:
+The script : `robot_bonus.robot` does the following:
 
 * Load Genie Library
 * Connect to the two devices
@@ -376,13 +352,8 @@ The script : `bonus_robot/verify_count.robot` does the following:
 * Verify the number of up Interfaces
 
 ```bash
-
-# this environment variable is needed as we are using our Mocked Device.
-# When pyATS CLI is used with real devices, these can be omitted.
-export UNICON_REPLAY=`pwd`/mocked_devices/bonus_recording
-
 cd bonus_robot
-robot --outputdir run verify_count.robot
+UNICON_REPLAY=`pwd`/mocked_devices/bonus_recording robot --outputdir bonus robot_bonus.robot
 ```
 
 This style of testing is great to run periodically and make sure of the state of

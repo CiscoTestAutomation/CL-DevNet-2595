@@ -1,5 +1,11 @@
 execute:
   commands:
+    "config term":
+      new_state: config
+    "term length 0": ""
+    "term width 511": ""
+    "term width 0": ""
+    "terminal session-timeout 0": ""
     dir: "Directory of bootflash:/\r\n\r\n   11  drwx            16384  Jul 18 2018\
       \ 07:49:17 +00:00  lost+found\r\n325121  drwx             4096  Jan 18 2019\
       \ 20:42:46 +00:00  .installer\r\n   12  -rw-        392479704  Jul 18 2018 07:50:04\
@@ -881,3 +887,13 @@ execute:
     show vrf detail: ''
     show vrf detail | inc \(VRF: ''
   prompt: switch#
+
+config:
+  prompt: "csr1000v-1(config)#"
+  commands:
+    "no logging console": ""
+    "line console 0": ""
+    "exec-timeout 0": ""
+    "terminal width 511": ""
+    "end":
+      new_state: execute

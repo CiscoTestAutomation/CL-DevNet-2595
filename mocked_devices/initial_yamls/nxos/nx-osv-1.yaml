@@ -1,5 +1,11 @@
 execute:
   commands:
+    "term length 0": ""
+    "term width 511": ""
+    "term width 0": ""
+    "terminal session-timeout 0": ""
+    "config term":
+      new_state: config
     dir: "       4096    Feb 25 20:49:04 2016  .patch/\r\n      16384    Feb 25 20:44:49\
       \ 2016  lost+found/\r\n       4096    Feb 26 10:11:16 2016  scripts/\r\n   33615360\
       \    Feb 11 13:19:49 2016  titanium-d1-kickstart.7.3.0.D1.1.bin\r\n  139230420\
@@ -4870,3 +4876,13 @@ execute:
       \                          1  --\r\nmgmt0                     management   \
       \                        2  --"
   prompt: switch#
+
+config:
+  prompt: "nx-osv-1(config)#"
+  commands:
+    "no logging console": ""
+    "line console": ""
+    "exec-timeout 0": ""
+    "terminal width 511": ""
+    "end":
+      new_state: execute

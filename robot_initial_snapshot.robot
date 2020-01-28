@@ -4,12 +4,12 @@
 *** Settings ***
 # Importing test libraries, resource files and variable files.
 Library        genie.libs.robot.GenieRobot
-Library        ats.robot.pyATSRobot
+Library        pyats.robot.pyATSRobot
 
 
 *** Variables ***
 # Define the pyATS testbed file to use for this run
-${testbed}     ../testbed.yaml 
+${testbed}     working-tb.yaml 
 
 *** Test Cases ***
 # Creating test cases from available keywords.
@@ -23,7 +23,4 @@ Connect
     connect to device "csr1000v-1"
 
 Profile the devices
-    Profile the system for "bgp;config;interface;platform;ospf;arp;vrf;vlan" on devices "nx-osv-1;csr1000v-1" as "./new_snapshot"
-
-Compare snapshots
-    Compare profile "../robot_initial_snapshot/good_snapshot" with "./new_snapshot" on devices "nx-osv-1;csr1000v-1"
+    Profile the system for "bgp;config;interface;platform;ospf;arp;vrf;vlan" on devices "nx-osv-1;csr1000v-1" as "./good_snapshot"

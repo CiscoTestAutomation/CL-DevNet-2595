@@ -13,9 +13,9 @@ devices:
         password: Cisc0123
     connections:
       console:
-        protocol: telnet
-        ip: "172.25.192.90"
-        port: 17002
+        command: mock_device_cli --os nxos --mock_data_dir mocked_devices/disaster_yamls/nxos --state execute
+        protocol: mock
+        
   csr1000v-1:
     type: router
     os: "iosxe"
@@ -28,6 +28,6 @@ devices:
         password: cisco
     connections:
       console:
-        protocol: telnet
-        ip: "172.25.192.90"
-        port: 17000
+        command: mock_device_cli --os iosxe --mock_data_dir mocked_devices/disaster_yamls/csr --state execute
+        protocol: mock
+        

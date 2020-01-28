@@ -108,3 +108,6 @@ report.html
 pts
 pts_json
 pts.json
+
+# diff files
+diff_*
