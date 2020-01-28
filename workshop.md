@@ -101,7 +101,7 @@ The first step is to learn the good state of the devices.
 # these two environment variables are needed as we are using our Mocked Device.
 # When pyATS CLI is used with real devices, these can be omitted.
 export UNICON_REPLAY=`pwd`/mocked_devices/initial_recording
-export UNICON_SPEED=10
+export UNICON_SPEED=100
 
 # run pyATS CLI
 pyats learn ospf interface bgp platform --testbed-file testbed.yaml --output learnt
@@ -334,6 +334,7 @@ Devices output can be parsed into structure data with pyATS CLI.
 ```bash
 
 cd ..
+export UNICON_REPLAY=`pwd`/mocked_devices/initial_recording
 pyats parse "show version" --testbed-file testbed.yaml --device nx-osv-1 --output initial_output
 pyats parse "show version" "show ip ospf interface vrf all" --testbed-file testbed.yaml --device nx-osv-1 --output initial_output
 ```
